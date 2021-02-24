@@ -19,15 +19,15 @@ export class DescriptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // processData(){
+  processData(){
 
-  //   Object.entries(this.myStates).forEach(([key, value]) => {
-  //     console.log("check", key, value)
-  //     let fileName = key + '.csv';
-  //     let filePath = 'assets/data/history/csv/' + fileName;
-  //     this.readFile(filePath);
-  //   });
-  // }
+    Object.entries(this.myStates).forEach(([key, value]) => {
+      console.log("check", key, value)
+      let fileName = key + '.csv';
+      let filePath = 'assets/data/history/csv/' + fileName;
+      // this.readFile(filePath);
+    });
+  }
 
   // readFile(filePath: string){
   //   this.http.get(filePath, {responseType: 'text'})
