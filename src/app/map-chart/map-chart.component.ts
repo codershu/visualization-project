@@ -3,8 +3,8 @@ import * as d3 from "d3";
 import states from '../../assets/data/state_name.json';
 import { HttpClient } from '@angular/common/http';
 import { DailyData, StateData } from '../shared/models';
-import { topology, feature} from 'topojson';
 import * as topojson from 'topojson';
+import { FeatureCollection, GeometryCollection } from 'geojson';
 
 @Component({
   selector: 'app-map-chart',
@@ -28,7 +28,6 @@ export class MapChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAllData();
-    // this.test1();
   }
 
   loadAllData(){
@@ -42,7 +41,6 @@ export class MapChartComponent implements OnInit {
     Promise.all(this.loadAllFilePromises)
       .then(() => {
         this.loadMapData();
-        console.log("check allStatesData", this.allStatesData)
       });
     
   }
@@ -93,21 +91,15 @@ export class MapChartComponent implements OnInit {
     
     let path = d3.geoPath()
                 .projection(projection);
-    
+
     this.svg.selectAll(null)
-            .data(this.allStatesData)
+            .data((topojson.feature(data, data.objects.states) as unknown as FeatureCollection).features)
             .enter()
             .append("path")
-            .attr("d", function() {
-              var feature = topojson.merge(data, data.objects.states.geometries.filter(function() { 
-                return true; 
-                }))
-              return path(feature);
-            })
-            .attr("fill","none")
-            .attr("stroke","black")
-            .attr("stroke-width",1);
-
+            .attr("fill","#e3e3e3")
+            .attr("stroke", "#333")
+            .attr("stroke-width", 0.5)
+            .attr("d", path);
   }
 
   dynamicalChange(){

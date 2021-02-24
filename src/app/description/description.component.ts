@@ -34,7 +34,7 @@ export class DescriptionComponent implements OnInit {
     .subscribe(
         data => {
             // this.csvToJson(data);
-            console.log("check csv", data)
+            console.log("check csv", data);
         },
         error => {
             console.log(error);
