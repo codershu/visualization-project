@@ -1,4 +1,6 @@
 export class DailyData {
+    public date: string = "";
+    public state: string = "";
     public death: number = 0;
     public deathConfirmed: number = 0;
     public deathIncrease: number = 0;
@@ -41,7 +43,6 @@ export class DailyData {
 }
 
 export class StateData{
-    public date: Date = new Date();
     public state: string = "";
-    public daily: DailyData = new DailyData();
+    public daily: DailyData[] = [];
 }

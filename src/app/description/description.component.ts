@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import states from '../../assets/data/history/state_name.json';
+import states from '../../assets/data/state_name.json';
 import { HttpClient } from '@angular/common/http';
 import { DailyData, StateData } from '../shared/models';
 
