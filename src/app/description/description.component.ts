@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import states from '../../assets/data/state_name.json';
+import states from '../../assets/data/history/state_name.json';
 import { HttpClient } from '@angular/common/http';
 import { DailyData, StateData } from '../shared/models';
 
@@ -19,27 +19,28 @@ export class DescriptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // processData(){
+  processData(){
 
-  //   Object.entries(this.myStates).forEach(([key, value]) => {
-  //     console.log("check", key, value)
-  //     let fileName = key + '.csv';
-  //     let filePath = 'assets/data/history/csv/' + fileName;
-  //     // this.readFile(filePath);
-  //   });
-  // }
+    Object.entries(this.myStates).forEach(([key, value]) => {
+      console.log("check", key, value)
+      let fileName = key + '.csv';
+      let filePath = 'assets/data/history/csv/' + fileName;
+      this.readFile(filePath);
+    });
+  }
 
-  // readFile(filePath: string){
-  //   this.http.get(filePath, {responseType: 'text'})
-  //   .subscribe(
-  //       data => {
-  //           this.csvToJson(data);
-  //       },
-  //       error => {
-  //           console.log(error);
-  //       }
-  //   );
-  // }
+  readFile(filePath: string){
+    this.http.get(filePath, {responseType: 'text'})
+    .subscribe(
+        data => {
+            // this.csvToJson(data);
+            console.log("check csv", data)
+        },
+        error => {
+            console.log(error);
+        }
+    );
+  }
 
   // csvToJson(data: any) {
   //   let record = data.split(/\r\n|\n/);
