@@ -7,6 +7,7 @@ import { CircularChartComponent } from './circular-chart/circular-chart.componen
 import { MapChartComponent } from './map-chart/map-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { DescriptionComponent } from './description/description.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DescriptionComponent } from './description/description.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
