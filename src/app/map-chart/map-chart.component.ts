@@ -27,7 +27,7 @@ export class MapChartComponent implements OnInit {
   currentStateData: MapSingleDayData[] = [];
   svg: any;
   lowColor: string = '#f9f9f9';
-  highColor: string = "red";
+  highColor: string = "darkred";
 
   projection = d3.geoAlbersUsa()
                   .scale(1000)
@@ -37,35 +37,45 @@ export class MapChartComponent implements OnInit {
 
   minVal: number = 0;
   maxVal: number = 0;
-  ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal]).range([this.lowColor, this.highColor]);
+  ramp = d3.scaleLinear<string>()
+           .domain([this.minVal, this.maxVal])
+          //  .interpolate(d3.interpolatePuRd(["", ""]))
+           .range([this.lowColor, this.highColor]);
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    // start point for everything
     this.loadAllData();
   }
 
   loadAllData(){
+    // loop through state_name list to create each file name to read file
     Object.entries(this.myStates).forEach(([key, value]) => {
       // console.log("check", key, value)
       let fileName = key + '.json';
       let filePath = 'assets/data/history/json/' + fileName;
       let fullStateName = "" + value;
+
+      // add each readFile Promise function into a list
       this.loadAllFilePromises.push(this.readFile(filePath, key, fullStateName));
     });
     
+    // Promise all Promises to move to the next step, ensure we have read all files
     Promise.all(this.loadAllFilePromises)
       .then(() => {
         this.loadMapData();
       });
   }
 
+  // this is a Promise function, Promise will ensure finishing current work before reaching to the next step
   readFile(filePath: string, stateName: string, fullStateName: string): Promise<any> {
       return new Promise((resolve, reject) => {
         this.http.get(filePath, {responseType: 'json'})
           .subscribe(
             data => {
               let currentStateData: StateData = new StateData();
+              // loop through each day's data of a state to combine as a summarized data set
               Object.entries(data).forEach(([key, value]) => {
                 // console.log("check key value", key, value)
                 let daily: DailyData = Object.assign(new DailyData(), value);
@@ -82,12 +92,13 @@ export class MapChartComponent implements OnInit {
             },
             error => {
               reject(error);
-              console.log(error);
+              console.log("error when read file", error);
             }
           );
       })
   }
 
+  // read map json file
   loadMapData(){
     d3.json("assets/map/us-state.json")
       .then(data => {
@@ -100,56 +111,8 @@ export class MapChartComponent implements OnInit {
       );
   }
 
-  drawMap(){
-    // console.log("check current data", this.currentStateData)
-    let that = this;
-    this.svg = d3.select("#graph")
-                .append("svg")
-                .attr("width", this.width)
-                .attr("height", this.height)
-
-    this.svg.selectAll()
-            .data(this.mapData.features)
-            .enter()
-            .append("path")
-            .attr("fill",function(d: any){
-              // console.log("check d", d);
-              let data = that.currentStateData.find(x => x.fullStateName == d.properties.name);
-              if(data){
-                let value = data.positive - data.recovered;
-                return that.ramp(value);
-              }
-              else
-                return that.lowColor;
-            })
-            // .attr("fill", "white")
-            .attr("stroke", "#333")
-            .attr("stroke-width", 0.5)
-            .attr("d", that.path);
-
-    this.dynamicalChange();
-  }
-
-  updateMap(){
-    let that = this;
-
-    this.svg.selectAll("path")
-            .data(this.mapData.features)
-            .attr("fill",function(d: any){
-              let data = that.currentStateData.find(x => x.fullStateName == d.properties.name);
-              if(data){
-                // console.log("check d", data.positive, data.recovered);
-                // let value = data.positive - data.recovered;
-                let value = data.positive;
-                return that.ramp(value);
-              }
-              else
-                return that.lowColor;
-            })
-            .attr("d", that.path);
-  }
-
-  prepareDate(){
+   // find the minimum date as the start date
+   prepareDate(){
     this.allStatesData.forEach(state => {
       let tempDate = new Date(state.daily[state.daily.length - 1].date);
       let current = new Date(this.minDate);
@@ -164,6 +127,7 @@ export class MapChartComponent implements OnInit {
         .catch(error => console.log("error when inital draw map", error));
   }
 
+  // reorganize data into a single day dataset with all states, "recovered" was not actually used
   prepareData(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.currentStateData = [];
@@ -185,6 +149,42 @@ export class MapChartComponent implements OnInit {
     })
   }
 
+  // draw the map initially, notice the this.svg is a global variable, for updating data on it in the following step
+  drawMap(){
+    // console.log("check current data", this.currentStateData)
+    let that = this;
+    this.svg = d3.select("#graph")
+                .append("svg")
+                .attr("width", this.width)
+                .attr("height", this.height)
+
+    this.svg.selectAll()
+            .data(this.mapData.features)
+            .enter()
+            .append("path")
+            // fill is the key step to update the color filled in each state
+            // by using ramp function with the current positive number
+            // ramp is a d3 way to define the color of choosed area
+            .attr("fill",function(d: any){
+              // console.log("check d", d);
+              let data = that.currentStateData.find(x => x.fullStateName == d.properties.name);
+              if(data){
+                let value = data.positive - data.recovered;
+                return that.ramp(value);
+              }
+              else
+                return that.lowColor;
+            })
+            .attr("stroke", "#333")
+            .attr("stroke-width", 0.5)
+            .attr("d", that.path);
+
+    // after inital drawing, start adding time to update data
+    this.dynamicalChange();
+  }
+
+
+  // use the setInterval function to update the data with certain time period
   dynamicalChange(){
     setInterval(() => {
       let current = new Date(this.currentDate);
@@ -201,14 +201,34 @@ export class MapChartComponent implements OnInit {
     }, 100);
   }
 
+    // call prepareData to get the newest currentStateData for updating the map
+    changeData(){
+      this.prepareData()
+        .then(() => {
+          // console.log("new data", this.currentStateData)
+          this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 10]).range([this.lowColor, this.highColor]);
+          this.updateMap();
+        })
+    }
 
-  changeData(){
-    this.prepareData()
-      .then(() => {
-        // console.log("new data", this.currentStateData)
-        this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 10]).range([this.lowColor, this.highColor]);
-        this.updateMap();
-      })
+  // update existing map with new data
+  updateMap(){
+    let that = this;
 
+    this.svg.selectAll("path")
+            .data(this.mapData.features)
+            .attr("fill",function(d: any){
+              let data = that.currentStateData.find(x => x.fullStateName == d.properties.name);
+              if(data){
+                // console.log("check d", data.positive, data.recovered);
+                // let value = data.positive - data.recovered;
+                let value = data.positive;
+                return that.ramp(value);
+              }
+              else
+                return that.lowColor;
+            })
+            .attr("d", that.path);
   }
+
 }
