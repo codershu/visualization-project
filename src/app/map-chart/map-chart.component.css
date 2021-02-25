@@ -1,7 +1,4 @@
-.main-content{
-    margin: 10px 20px 20px 20px;
-    border: black 1px solid;
+
+.main-container{
     height: 550px;
-    width: 1200px;
-    display: inline-block;
 }

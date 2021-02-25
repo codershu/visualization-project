@@ -44,5 +44,13 @@ export class DailyData {
 
 export class StateData{
     public state: string = "";
+    public fullStateName: string = "";
     public daily: DailyData[] = [];
+}
+
+export class MapSingleDayData{
+    public state: string = "";
+    public fullStateName: string = "";
+    public positive: number = 0;
+    public recovered: number = 0;
 }
