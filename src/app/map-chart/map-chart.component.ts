@@ -3,9 +3,6 @@ import * as d3 from "d3";
 import states from '../../assets/data/state_name.json';
 import { HttpClient } from '@angular/common/http';
 import { DailyData, StateData, MapSingleDayData } from '../shared/models';
-import * as topojson from 'topojson';
-import { FeatureCollection, GeometryCollection } from 'geojson';
-import { scaleLinear, ScaleLinear } from 'd3';
 
 @Component({
   selector: 'app-map-chart',
@@ -26,8 +23,8 @@ export class MapChartComponent implements OnInit {
   allStatesData: StateData[] = [];
   currentStateData: MapSingleDayData[] = [];
   svg: any;
-  lowColor: string = '#f9f9f9';
-  highColor: string = "darkred";
+  lowColor: string = "#f9f9f9";
+  highColor: string = "#B22222";
 
   projection = d3.geoAlbersUsa()
                   .scale(900)
@@ -182,6 +179,31 @@ export class MapChartComponent implements OnInit {
             .attr("stroke-width", 0.5)
             .attr("d", that.path);
 
+    this.svg.selectAll("text")
+            .data(this.mapData.features)
+            .enter()
+            .append("svg:text")
+            .text(function(d: any){
+              let shortName = "";
+              Object.entries(that.myStates).forEach(([key, value]) => {
+                if(value == d.properties.name){
+                  shortName = key;
+                }
+              });
+              return shortName;
+            })
+            // .attr("transform", function (d: any) { return "translate(" + that.path.centroid(d) + ")"; })
+            // .attr("dx", function (d: any) { return d.properties.dx || "0"; })
+            // .attr("dy", function (d: any) { return d.properties.dy || "0.35em"; })
+            .attr("x", function(d: any){
+                return that.path.centroid(d)[0];
+            })
+            .attr("y", function(d: any){
+                return  that.path.centroid(d)[1];
+            })
+            .attr("text-anchor","middle")
+            .attr('font-size','6pt');
+
     // after inital drawing, start adding time to update data
     this.dynamicalChange();
   }
@@ -209,7 +231,7 @@ export class MapChartComponent implements OnInit {
       this.prepareData()
         .then(() => {
           // console.log("new data", this.currentStateData)
-          this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 10]).range([this.lowColor, this.highColor]);
+          this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 2]).range([this.lowColor, this.highColor]);
           this.updateMap();
         })
     }
@@ -270,7 +292,7 @@ export class MapChartComponent implements OnInit {
 
 		var y = d3.scaleLinear()
 			.range([h, 0])
-			.domain([this.minVal, this.maxVal]);
+			.domain([this.minVal, this.maxVal / 2]);
 
 		var yAxis = d3.axisRight(y);
 
