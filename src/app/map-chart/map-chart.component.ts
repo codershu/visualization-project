@@ -4,6 +4,7 @@ import states from '../../assets/data/state_name.json';
 import { HttpClient } from '@angular/common/http';
 import { DailyData, StateData, MapSingleDayData } from '../shared/models';
 
+
 @Component({
   selector: 'app-map-chart',
   templateUrl: './map-chart.component.html',
@@ -38,6 +39,7 @@ export class MapChartComponent implements OnInit {
            .domain([this.minVal, this.maxVal])
           //  .interpolate(d3.interpolatePuRd(["", ""]))
            .range([this.lowColor, this.highColor]);
+  tooltip: any;
 
   constructor(private http: HttpClient) { }
 
@@ -110,13 +112,13 @@ export class MapChartComponent implements OnInit {
 
    // find the minimum date as the start date
    prepareDate(){
-    this.allStatesData.forEach(state => {
-      let tempDate = new Date(state.daily[state.daily.length - 1].date);
-      let current = new Date(this.minDate);
-      if(tempDate < current){
-        this.minDate = state.daily[state.daily.length - 1].date;
-      }
-    })
+    // this.allStatesData.forEach(state => {
+    //   let tempDate = new Date(state.daily[state.daily.length - 1].date);
+    //   let current = new Date(this.minDate);
+    //   if(tempDate < current){
+    //     this.minDate = state.daily[state.daily.length - 1].date;
+    //   }
+    // })
     this.currentDate = this.minDate;
     // console.log("check min date", this.minDate)
     this.prepareData()
@@ -178,6 +180,32 @@ export class MapChartComponent implements OnInit {
             .attr("stroke", "#333")
             .attr("stroke-width", 0.5)
             .attr("d", that.path);
+    
+    this.tooltip = d3.select("#graph")
+            .append("div")
+            .style("opacity", 0)
+            .attr("class", "tooltip")
+            .style("background-color", "white")
+            .style("border", "solid")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px");
+    
+    // this.tooltip = d3Tip()
+    //         .attr('class', 'd3-tip')
+    //         .offset([-5, 0])
+    //         .html(function(d: any) {
+    //           console.log("check d3Tip", d)
+    //           // var dataRow = countryById.get(d.properties.name);
+    //           //    if (dataRow) {
+    //           //        console.log(dataRow);
+    //           //        return dataRow.states + ": " + dataRow.mortality;
+    //           //    } else {
+    //           //        console.log("no dataRow", d);
+    //           //        return d.properties.name + ": No data.";
+    //           //    }
+    //             return "test";
+    //         })
 
     this.svg.selectAll("text")
             .data(this.mapData.features)
@@ -192,22 +220,36 @@ export class MapChartComponent implements OnInit {
               });
               return shortName;
             })
-            // .attr("transform", function (d: any) { return "translate(" + that.path.centroid(d) + ")"; })
-            // .attr("dx", function (d: any) { return d.properties.dx || "0"; })
-            // .attr("dy", function (d: any) { return d.properties.dy || "0.35em"; })
             .attr("x", function(d: any){
                 return that.path.centroid(d)[0];
             })
             .attr("y", function(d: any){
-                return  that.path.centroid(d)[1];
+                return that.path.centroid(d)[1];
             })
             .attr("text-anchor","middle")
-            .attr('font-size','6pt');
+            .attr('font-size','6pt')
+            .on("mouseover", function(d: any){
+              that.tooltip.style("opacity", 1);
+              d3.select(null)
+                .style("stroke", "none")
+                .style("opacity", 0.8)
+            })
+            .on("mousemove", function(){
+              that.tooltip
+                  .html("Current Positive case number: ")
+                  
+            })
+            .on("mouseleave", function(){
+              that.tooltip
+                  .style("opacity", 0)
+              d3.select(null)
+                .style("stroke", "none")
+                .style("opacity", 0.8)
+            });
 
     // after inital drawing, start adding time to update data
     this.dynamicalChange();
   }
-
 
   // use the setInterval function to update the data with certain time period
   dynamicalChange(){
@@ -221,20 +263,27 @@ export class MapChartComponent implements OnInit {
           })
           .catch(error => console.log("error when prepare data", error))
       }else{
-        this.currentDate = this.minDate;
+        setTimeout(() => {
+          this.currentDate = this.minDate;
+              this.prepareData()
+                  .then(() => {
+                    this.changeData();
+                  })
+                  .catch(error => console.log("error when prepare data", error))
+        }, 3000)
       }
     }, 100);
   }
 
-    // call prepareData to get the newest currentStateData for updating the map
-    changeData(){
-      this.prepareData()
-        .then(() => {
-          // console.log("new data", this.currentStateData)
-          this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 2]).range([this.lowColor, this.highColor]);
-          this.updateMap();
-        })
-    }
+  // call prepareData to get the newest currentStateData for updating the map
+  changeData(){
+    this.prepareData()
+      .then(() => {
+        // console.log("new data", this.currentStateData)
+        this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 2]).range([this.lowColor, this.highColor]);
+        this.updateMap();
+      })
+  }
 
   // update existing map with new data
   updateMap(){
@@ -252,6 +301,29 @@ export class MapChartComponent implements OnInit {
               }
               else
                 return that.lowColor;
+            })
+            .on("mouseover", function(){
+              that.tooltip.style("opacity", 1);
+              d3.select(null)
+                .style("stroke", "none")
+                .style("opacity", 0.8)
+            })
+            .on("mousemove", function(d: any){
+              console.log("check d 1", d)
+              that.tooltip
+                  .html(function(){
+                    console.log("check d 2", d)
+                    return "Current Positive case number: ";
+                  }
+                )
+                  
+            })
+            .on("mouseleave", function(){
+              that.tooltip
+                  .style("opacity", 0)
+              d3.select(null)
+                .style("stroke", "none")
+                .style("opacity", 0.8)
             })
             .attr("d", that.path);
   }
