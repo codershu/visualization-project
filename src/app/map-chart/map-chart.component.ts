@@ -18,7 +18,7 @@ export class MapChartComponent implements OnInit {
   loadAllFilePromises: Promise<any>[] = [];
   currentDate: string = "";
   mapData: any = null;
-  width: number = 960;
+  width: number = 860;
   height: number = 500;
   myNumber: number = 0;
   minDate: string = "2020-03-01";
@@ -30,7 +30,7 @@ export class MapChartComponent implements OnInit {
   highColor: string = "darkred";
 
   projection = d3.geoAlbersUsa()
-                  .scale(1000)
+                  .scale(900)
                   .translate([this.width/2, this.height/2])
   path = d3.geoPath()
            .projection(this.projection);
@@ -123,7 +123,10 @@ export class MapChartComponent implements OnInit {
     this.currentDate = this.minDate;
     // console.log("check min date", this.minDate)
     this.prepareData()
-        .then(() => this.drawMap())
+        .then(() => {
+          this.drawMap();
+          this.drawLengend();
+        })
         .catch(error => console.log("error when inital draw map", error));
   }
 
@@ -229,6 +232,52 @@ export class MapChartComponent implements OnInit {
                 return that.lowColor;
             })
             .attr("d", that.path);
+  }
+
+  drawLengend(){
+    var w = 140, h = 300;
+
+		var key = d3.select("#graph")
+			.append("svg")
+			.attr("width", w)
+			.attr("height", h)
+			.attr("class", "legend");
+
+		var legend = key.append("defs")
+			.append("svg:linearGradient")
+			.attr("id", "gradient")
+			.attr("x1", "100%")
+			.attr("y1", "0%")
+			.attr("x2", "100%")
+			.attr("y2", "100%")
+			.attr("spreadMethod", "pad");
+
+		legend.append("stop")
+			.attr("offset", "0%")
+			.attr("stop-color", this.highColor)
+			.attr("stop-opacity", 1);
+			
+		legend.append("stop")
+			.attr("offset", "100%")
+			.attr("stop-color", this.lowColor)
+			.attr("stop-opacity", 1);
+
+		key.append("rect")
+			.attr("width", w - 110)
+			.attr("height", h)
+			.style("fill", "url(#gradient)")
+			.attr("transform", "translate(0,10)");
+
+		var y = d3.scaleLinear()
+			.range([h, 0])
+			.domain([this.minVal, this.maxVal]);
+
+		var yAxis = d3.axisRight(y);
+
+		key.append("g")
+			.attr("class", "y axis")
+			.attr("transform", "translate(31,10)")
+			.call(yAxis)
   }
 
 }
