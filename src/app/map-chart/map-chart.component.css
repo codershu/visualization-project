@@ -1,5 +1,5 @@
 .tooltip {   
-    position: absolute;         
+    /* position: absolute;          */
     text-align: center;         
     width: 80px;                    
     height: 28px;                   
@@ -9,4 +9,9 @@
     border: 0px;        
     border-radius: 8px;         
     pointer-events: none;           
+}
+
+.self-tooltip{
+    text-align: center;
+    margin-top: 10px;
 }

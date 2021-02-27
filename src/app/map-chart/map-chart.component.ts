@@ -26,6 +26,9 @@ export class MapChartComponent implements OnInit {
   svg: any;
   lowColor: string = "#f9f9f9";
   highColor: string = "#B22222";
+  dynamicalInterval: any;
+  mouseoverState: string = "None";
+  mouseoverNumber: number = 0;
 
   projection = d3.geoAlbersUsa()
                   .scale(900)
@@ -63,6 +66,7 @@ export class MapChartComponent implements OnInit {
     // Promise all Promises to move to the next step, ensure we have read all files
     Promise.all(this.loadAllFilePromises)
       .then(() => {
+        this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 2]).range([this.lowColor, this.highColor]);
         this.loadMapData();
       });
   }
@@ -190,22 +194,15 @@ export class MapChartComponent implements OnInit {
             .style("border-width", "2px")
             .style("border-radius", "5px")
             .style("padding", "5px");
-    
-    // this.tooltip = d3Tip()
-    //         .attr('class', 'd3-tip')
-    //         .offset([-5, 0])
-    //         .html(function(d: any) {
-    //           console.log("check d3Tip", d)
-    //           // var dataRow = countryById.get(d.properties.name);
-    //           //    if (dataRow) {
-    //           //        console.log(dataRow);
-    //           //        return dataRow.states + ": " + dataRow.mortality;
-    //           //    } else {
-    //           //        console.log("no dataRow", d);
-    //           //        return d.properties.name + ": No data.";
-    //           //    }
-    //             return "test";
-    //         })
+
+    this.addTag();
+
+    // after inital drawing, start adding time to update data
+    this.dynamicalChange();
+  }
+
+  addTag(){
+    let that = this;
 
     this.svg.selectAll("text")
             .data(this.mapData.features)
@@ -228,61 +225,70 @@ export class MapChartComponent implements OnInit {
             })
             .attr("text-anchor","middle")
             .attr('font-size','6pt')
-            .on("mouseover", function(d: any){
+            .on("mouseover", function(d: any, i: any){
+              clearInterval(that.dynamicalInterval);
               that.tooltip.style("opacity", 1);
               d3.select(null)
                 .style("stroke", "none")
-                .style("opacity", 0.8)
+                .style("opacity", 0.8);
+              let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
+              let number = 0;
+              if(data) number = data.positive;
+              that.mouseoverState = i.properties.name;
+              that.mouseoverNumber = number;
+              // that.tooltip
+              //   .html(function(){
+              //     // console.log("check d 2", d)
+              //     return "State: " + i.properties.name + ", Number: " + number;
+              //   }
+              // )  
             })
-            .on("mousemove", function(){
-              that.tooltip
-                  .html("Current Positive case number: ")
-                  
+            .on("mousemove", function(d: any, i: any){
+              clearInterval(that.dynamicalInterval);
+              let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
+              let number = 0;
+              if(data) number = data.positive;
+              that.mouseoverState = i.properties.name;
+              that.mouseoverNumber = number;
+              // that.tooltip
+              //   .html(function(){
+              //     // console.log("check d 2", d)
+              //     return "State: " + i.properties.name + ", Number: " + number;
+              //   }
+              // )  
             })
             .on("mouseleave", function(){
+              that.mouseoverState = "None";
+              that.mouseoverNumber = 0;
+              that.dynamicalChange();
               that.tooltip
                   .style("opacity", 0)
               d3.select(null)
                 .style("stroke", "none")
                 .style("opacity", 0.8)
-            });
-
-    // after inital drawing, start adding time to update data
-    this.dynamicalChange();
+            })
   }
 
   // use the setInterval function to update the data with certain time period
   dynamicalChange(){
-    setInterval(() => {
+    this.dynamicalInterval = setInterval(() => {
       let current = new Date(this.currentDate);
       if(current < new Date(this.maxDate)){
         this.currentDate = new Date(current.setDate(current.getDate() + 1)).toLocaleString('en-CA').slice(0, 10);
         this.prepareData()
           .then(() => {
-            this.changeData();
+            this.updateMap();
           })
-          .catch(error => console.log("error when prepare data", error))
+          .catch(error => console.log("error when prepare data", error));
       }else{
+        clearInterval(this.dynamicalInterval);
         setTimeout(() => {
           this.currentDate = this.minDate;
-              this.prepareData()
-                  .then(() => {
-                    this.changeData();
-                  })
-                  .catch(error => console.log("error when prepare data", error))
-        }, 3000)
-      }
-    }, 100);
-  }
+          this.dynamicalChange();
+        }, 3000);
 
-  // call prepareData to get the newest currentStateData for updating the map
-  changeData(){
-    this.prepareData()
-      .then(() => {
-        // console.log("new data", this.currentStateData)
-        this.ramp = d3.scaleLinear<string>().domain([this.minVal, this.maxVal / 2]).range([this.lowColor, this.highColor]);
-        this.updateMap();
-      })
+      }
+    }, 50);
   }
 
   // update existing map with new data
@@ -291,6 +297,7 @@ export class MapChartComponent implements OnInit {
 
     this.svg.selectAll("path")
             .data(this.mapData.features)
+            // .enter()
             .attr("fill",function(d: any){
               let data = that.currentStateData.find(x => x.fullStateName == d.properties.name);
               if(data){
@@ -302,30 +309,51 @@ export class MapChartComponent implements OnInit {
               else
                 return that.lowColor;
             })
-            .on("mouseover", function(){
+            .on("mouseover", function(d: any, i: any){
+              clearInterval(that.dynamicalInterval);
               that.tooltip.style("opacity", 1);
               d3.select(null)
                 .style("stroke", "none")
-                .style("opacity", 0.8)
+                .style("opacity", 0.8);
+              let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
+              let number = 0;
+              if(data) number = data.positive;
+              that.mouseoverState = i.properties.name;
+              that.mouseoverNumber = number;
+              // that.tooltip
+              //   .html(function(){
+              //     // console.log("check d 2", d)
+              //     return "State: " + i.properties.name + ", Number: " + number;
+              //   }
+              // )  
             })
-            .on("mousemove", function(d: any){
-              console.log("check d 1", d)
-              that.tooltip
-                  .html(function(){
-                    console.log("check d 2", d)
-                    return "Current Positive case number: ";
-                  }
-                )
-                  
+            .on("mousemove", function(d: any, i: any){
+              clearInterval(that.dynamicalInterval);
+              let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
+              let number = 0;
+              if(data) number = data.positive;
+              that.mouseoverState = i.properties.name;
+              that.mouseoverNumber = number;
+              // that.tooltip
+              //   .html(function(){
+              //     // console.log("check d 2", d)
+              //     return "State: " + i.properties.name + ", Number: " + number;
+              //   }
+              // )  
             })
             .on("mouseleave", function(){
+              that.dynamicalChange();
               that.tooltip
                   .style("opacity", 0)
               d3.select(null)
                 .style("stroke", "none")
-                .style("opacity", 0.8)
+                .style("opacity", 0.8);
+              that.mouseoverState = "None";
+              that.mouseoverNumber = 0;
             })
             .attr("d", that.path);
+
+    this.addTag();
   }
 
   drawLengend(){

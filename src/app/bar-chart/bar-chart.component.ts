@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import * as d3 from "d3";
 import states from '../../assets/data/state_name.json';
-import { DailyData, BarChartSingleDayData, StateData } from '../shared/models';
+import { DailyData, StateData } from '../shared/models';
 
 @Component({
   selector: 'app-bar-chart',
@@ -20,7 +20,7 @@ export class BarChartComponent implements OnInit {
   currentDate: string = "";
   minDate: string = "2020-03-04";
   maxDate: string = "2021-02-22";
-  currentStateData: BarChartSingleDayData[] = [];
+  // currentStateData: BarChartSingleDayData[] = [];
   
   margin: {} = { top:20, right:20, bottom:30, left:40};
  
@@ -45,10 +45,10 @@ export class BarChartComponent implements OnInit {
     });
     
     // Promise all Promises to move to the next step, ensure we have read all files
-    Promise.all(this.loadAllFilePromises)
-      .then(() => {
-        this.loadBarChartData();
-      });
+    // Promise.all(this.loadAllFilePromises)
+    //   .then(() => {
+    //     this.loadBarChartData();
+    //   });
 
   }
 
@@ -82,59 +82,59 @@ export class BarChartComponent implements OnInit {
     })
 }
 // read map json file
-loadBarChartData(){
-  d3.json("assets/data/history/json")
-    .then(data => {
-        // console.log("check map data", data);
-        this.BarChartData = data;
-        this.prepareDate();
-    })
-    .catch(error => 
-      console.log("error when load us.json", error)
-    );
-}
+// loadBarChartData(){
+//   d3.json("assets/data/history/json")
+//     .then(data => {
+//         // console.log("check map data", data);
+//         this.BarChartData = data;
+//         this.prepareDate();
+//     })
+//     .catch(error => 
+//       console.log("error when load us.json", error)
+//     );
+// }
 
-prepareDate(){
-  // this.allStatesData.forEach(state => {
-  //   let tempDate = new Date(state.daily[state.daily.length - 1].date);
-  //   let current = new Date(this.minDate);
-  //   if(tempDate < current){
-  //     this.minDate = state.daily[state.daily.length - 1].date;
-  //   }
-  // })
-  this.currentDate = this.minDate;
-  // console.log("check min date", this.minDate)
-  this.prepareData()
-      .then(() => {
-        // this.createChart();
+// prepareDate(){
+//   // this.allStatesData.forEach(state => {
+//   //   let tempDate = new Date(state.daily[state.daily.length - 1].date);
+//   //   let current = new Date(this.minDate);
+//   //   if(tempDate < current){
+//   //     this.minDate = state.daily[state.daily.length - 1].date;
+//   //   }
+//   // })
+//   this.currentDate = this.minDate;
+//   // console.log("check min date", this.minDate)
+//   this.prepareData()
+//       .then(() => {
+//         // this.createChart();
     
-      })
-      .catch(error => console.log("error when inital draw map", error));
-}
+//       })
+//       .catch(error => console.log("error when inital draw map", error));
+// }
 
-prepareData(): Promise<any> {
-  return new Promise((resolve, reject) => {
-    this.currentStateData = [];
-    this.allStatesData.forEach(state => {
-      let currentDeath = state.daily.find(x => x.date == this.currentDate)?.death;
-      // console.log("check each state", state.fullStateName, currentPositive)
-      currentDeath = currentDeath == null ? 0 : currentDeath;
-      let currentRecovered = state.daily.find(x => x.date == this.currentDate)?.recovered;
-      currentRecovered = currentRecovered == null ? 0 : currentRecovered;
-      let currentHospitalized = state.daily.find(x => x.date == this.currentDate)?.hospitalized;
-      currentHospitalized = currentHospitalized == null ? 0 : currentHospitalized;
-      let currentStateData = new BarChartSingleDayData();
-      currentStateData.state = state.state;
-      currentStateData.death = currentDeath;
-      currentStateData.recovered = currentRecovered;
-      currentStateData.hospitalized = currentHospitalized;
-      currentStateData.fullStateName = state.fullStateName;
-      this.currentStateData.push(currentStateData);
-    })
+// prepareData(): Promise<any> {
+//   return new Promise((resolve, reject) => {
+//     this.currentStateData = [];
+//     this.allStatesData.forEach(state => {
+//       let currentDeath = state.daily.find(x => x.date == this.currentDate)?.death;
+//       // console.log("check each state", state.fullStateName, currentPositive)
+//       currentDeath = currentDeath == null ? 0 : currentDeath;
+//       let currentRecovered = state.daily.find(x => x.date == this.currentDate)?.recovered;
+//       currentRecovered = currentRecovered == null ? 0 : currentRecovered;
+//       let currentHospitalized = state.daily.find(x => x.date == this.currentDate)?.hospitalized;
+//       currentHospitalized = currentHospitalized == null ? 0 : currentHospitalized;
+//       let currentStateData = new BarChartSingleDayData();
+//       currentStateData.state = state.state;
+//       currentStateData.death = currentDeath;
+//       currentStateData.recovered = currentRecovered;
+//       currentStateData.hospitalized = currentHospitalized;
+//       currentStateData.fullStateName = state.fullStateName;
+//       this.currentStateData.push(currentStateData);
+//     })
 
-    resolve(this.currentStateData);
-  })
-}
+//     resolve(this.currentStateData);
+//   })
+// }
 
 
 
