@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import * as d3 from "d3";
 import states from '../../assets/data/state_name.json';
-import { DailyData, BarChartSingleDayData, StateData } from '../shared/models';
+import { DailyData, StateData, BarChartSingleDayData } from '../shared/models';
 
 @Component({
   selector: 'app-bar-chart',
