@@ -54,3 +54,11 @@ export class MapSingleDayData{
     public positive: number = 0;
     public recovered: number = 0;
 }
+
+export class BarChartSingleDayData{
+    public state: string = "";
+    public fullStateName: string = "";
+    public death: number = 0;
+    public recovered: number = 0;
+    public hospitalized: number = 0;
+}

@@ -64,7 +64,8 @@ export class MapChartComponent implements OnInit {
     Promise.all(this.loadAllFilePromises)
       .then(() => {
         this.loadMapData();
-      });
+      })
+      .catch(error => console.log('Promise.all', error));
   }
 
   // this is a Promise function, Promise will ensure finishing current work before reaching to the next step
@@ -85,7 +86,7 @@ export class MapChartComponent implements OnInit {
               currentStateData.state = stateName;
               currentStateData.fullStateName = fullStateName;
               this.allStatesData.push(currentStateData);
-              // console.log("check json", currentStateData);
+              console.log("check json", currentStateData);
               
               resolve(currentStateData);
             },
