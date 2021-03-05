@@ -26,6 +26,8 @@ export class BarChartComponent implements OnInit {
   height: number = 500;
   margin: number = 20;
   xMax: number = 0;
+  lowColor: string = '#f9f9f9';
+
  
  
 
@@ -143,34 +145,55 @@ prepareData(): Promise<any> {
   }
   
   drawBars(){
-    //let xMax = d3.max(this.currentDate.death)
+    let that = this;
 
     let x = d3.scaleBand()
               .range([0, this.width])
               //.domain([0, xMax])
               .padding(0.2);
-    
-    this.svg.append('g')
-            .attr("transform", "translate(0," + this.height + ")")
-            .call(d3.axisBottom(x))
-            .selectAll('text')
-            .attr("transform", "translate(-10,0)rotate(-45)")
-            .style("text-anchor", "end");
-
 
     let y = d3.scaleLinear()
               .domain([0,200000])
               .range([this.height, 0]);
 
+    //x.domain(data.map(function(d) {return d.year}))
+
+    
+    this.svg.append('g')
+            .attr("transform", "translate(0," + this.height + ")")
+            .call(d3.axisBottom(x))
+            //.selectAll('text')
+            //.attr("transform", "translate(-10,0)rotate(-45)")
+            //.style("text-anchor", "end");
+
+    //d3.json('assets/data/history/json/AZ.json', function(data: any) {
+      //console.log(data);
+      
+    //});
+
+    //x.domain(data.map(function(d) { return d.date;}));
+    //y.domain([0, d3.max(data, function(d) {return d.death; })]);
+    
+
     this.svg.append('g')
             .call(d3.axisLeft(y));
 
-    this.svg.selectAll()
-            .data(this.BarChartData.features)
+    this.svg.selectAll('.bar')
+            .data(this.currentStateData)
             .enter()
             .append('rect')
-            .attr("x", this.BarChartData.death)
-            .attr("y", this.BarChartData.hospitalized)
+            .attr('fill',function(d:any){
+              let data = that.currentStateData.find(x => x.fullStateName == d.properties.name);
+              if(data){
+                let value = data.death
+                return value;
+        
+              }
+              else 
+                return that.lowColor;
+            })
+            .attr("x", function(d:any) {return x(d.date);})
+            .attr("y", function(d:any) {return y(d.death);})
             .attr("width", x.bandwidth())
             .attr("height", this.height )
             .attr("fill", "#d04a35");
