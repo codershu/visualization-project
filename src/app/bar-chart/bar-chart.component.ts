@@ -23,11 +23,15 @@ export class BarChartComponent implements OnInit {
   maxDate: string = "2021-02-22";
   currentStateData: BarChartSingleDayData[] = [];
   svg: any;
-  width: number = 860;
-  height: number = 500;
-  margin: number = 20;
+  marginTop: number = 20;
+  marginRight: number = 160;
+  marginBottom: number = 35;
+  marginLeft: number = 30;
+  width: number = 1400 - this.marginLeft - this.marginRight;
+  height: number = 400 - this.marginTop - this.marginBottom;
   xMax: number = 0;
   lowColor: string = '#f9f9f9';
+ 
 
  
  
@@ -145,10 +149,10 @@ prepareData(): Promise<any> {
 
     this.svg = d3.select("#graph")
                 .append("svg")
-                .attr("width", this.width + this.margin)
-                .attr("height", this.height + this.margin)
+                .attr("width", this.width + this.marginLeft + this.marginRight)
+                .attr("height", this.height + this.marginTop + this.marginBottom)
                 .append("g")
-                .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
+                .attr("transform", "translate(" + this.marginLeft + "," + this.marginTop + ")");
 
     // this.svg.append('text')
     //         .attr('transform', 'translate(100,0)')
@@ -163,10 +167,14 @@ prepareData(): Promise<any> {
   drawBars(){
     let that = this;
 
+    // let subgroups = this.currentStateData.slice(1)
+    // let groups = d3.map(this.currentStateData, function(d) {return (d.group)}).keys()
+
 
     let x = d3.scaleBand()
-              .range([0, this.width])
-              //.domain(groups)
+              
+              .domain(this.currentStateData.map(d => d.state))
+              .range([0, this.width - this.marginRight])
               .padding(0.2);
 
     this.svg.append('g')
@@ -175,12 +183,12 @@ prepareData(): Promise<any> {
               
 
     let y = d3.scaleLinear()
-              .domain([0,60])
-              .range([this.height, 0]);
+              .domain([0,500])
+              .range([this.height , 0]);
     
 
-    // this.svg.append('g')
-    //         .call(d3.axisLeft(y));
+    this.svg.append('g')
+            .call(d3.axisLeft(y));
 
     // let color = d3.scaleOrdinal()
     //               .domain(subgroups)
@@ -189,28 +197,58 @@ prepareData(): Promise<any> {
     // let stackedData = d3.stack()
     //                     .keys(subgroups)(data)
 
-    this.svg.selectAll('.bar')
+    // this.svg.append('g')
+    //         .selectAll('g')
+    //         .data(stackedData)
+    //         .enter()
+    //         .append('g')
+    //         .attr('fill', function(d) {return color(d.key);})
+    //         .selectAll('rect')
+    //         .data(function(d) {return d;})
+    //         .enter()
+    //         .append('rect')
+    //         .attr('x', function(d) {return x(d.data.group);})
+    //         .attr('y', function(d) {return y(d[1]);})
+    //         .attr('height', function(d) {return y(d[0]) - y(d[1]);})
+    //         .attr('width', x.bandwidth())
+
+    this.svg.selectAll('bars')
             .data(this.currentStateData)
             .enter()
             .append('rect')
-            .attr('fill',function(d:any){
-              console.log('want to see', d)
-              let data = that.currentStateData.find(x => x.fullStateName == d.properties.name);
-              if(data){
-                let value = data.death
-                return value;
+            .attr('x', (d: { state: string; }) => x(d.state))
+            .attr('y', (d: { death: d3.NumberValue; }) => y(d.death))
+            .attr('width', x.bandwidth())
+            .attr('height', (d: { death: d3.NumberValue; }) => this.height - y(d.death))
+            .attr('fill', '#d04a35');
+
+            
+  }
+
+
+
+    // this.svg.selectAll('.bar')
+    //         .data(this.currentStateData)
+    //         .enter()
+    //         .append('rect')
+    //         .attr('fill',function(d:any){
+    //           console.log('want to see', d)
+    //           let data = that.currentStateData.find(x => x.fullStateName == d.fullStateName);
+    //           if(data){
+    //             let value = data.death
+    //             return value;
         
-              }
-              else 
-                return that.lowColor;
-            })
-            .attr("x", function(d:any) {return x(d.date);})
-            .attr("y", function(d:any) {return y(d.death);})
-            .attr("width", x.bandwidth())
-            .attr("height", this.height )
-            .attr("fill", "#d04a35");
+            //   }
+            //   else 
+            //     return that.lowColor;
+            // })
+            // .attr("x", function(d:any) {return x(d.date);})
+            // .attr("y", function(d:any) {return y(d.death);})
+            // .attr("width", x.bandwidth())
+            // .attr("height", this.height )
+            // .attr("fill", "#d04a35");
   }
     
  
 
-  } 
+
