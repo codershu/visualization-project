@@ -15,12 +15,12 @@ export class BarChartComponent implements OnInit {
 
   myStates: {} = states;
   loadAllFilePromises: Promise<any>[] = [];
-  minVal: number = 0;
-  maxVal: number = 0;
+  // minVal: number = 0;
+  maxYAxisVal: number = 0;
   allStatesData: StateData[] = [];
   BarChartData: any = null;
   currentDate: string = "";
-  minDate: string = "2020-04-01";
+  minDate: string = "2021-02-01";
   maxDate: string = "2021-02-22";
   currentStateData: BarChartSingleDayData[] = [];
   svg: any;
@@ -42,8 +42,6 @@ export class BarChartComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void{
-    console.log(4);
-
     this.loadAllData();
   }
 
@@ -62,12 +60,15 @@ export class BarChartComponent implements OnInit {
     // Promise all Promises to move to the next step, ensure we have read all files
     Promise.all(this.loadAllFilePromises)
       .then(() => {
+        this.getMaxYAxisValue();
+      })
+      .then(() => {
         //console.log("see what", this.allStatesData);
         this.prepareDate();
-        
       });
 
   }
+
 
    // this is a Promise function, Promise will ensure finishing current work before reaching to the next step
    readFile(filePath: string, stateName: string, fullStateName: string): Promise<any> {
@@ -82,14 +83,12 @@ export class BarChartComponent implements OnInit {
             Object.entries(data).forEach(([key, value]) => {
               //console.log("check key value", key, value)
               let daily: DailyData = Object.assign(new DailyData(), value);
-              // this.minVal = daily.positive < this.minVal ? daily.positive : this.minVal;
-              //this.maxVal = daily.positive > this.maxVal ? daily.positive : this.maxVal;
               stateData.daily.push(daily);
             });
             stateData.state = stateName;
             stateData.fullStateName = fullStateName;
             this.allStatesData.push(stateData);
-            console.log("check json", this.allStatesData);
+            // console.log("check json", this.allStatesData);
             
             resolve(stateData);
         
@@ -102,32 +101,28 @@ export class BarChartComponent implements OnInit {
     })
 }
 
-maxValue(death: number, hospitalized: number, positive: number): Promise<any>{
+getMaxYAxisValue(): Promise<any>{
   return new Promise((resolve, reject) => {
-    let maxValue = 0;
-    Object.entries(this.stateData).forEach
+    this.maxYAxisVal = 0;
+    // loop
+    this.allStatesData.forEach(state => {
+      state.daily.forEach(singleDay => {
+        let currentValue = +singleDay.death + +singleDay.hospitalized + +singleDay.recovered;
+        this.maxYAxisVal = currentValue > this.maxYAxisVal ? currentValue : this.maxYAxisVal;
+      })
+    })
 
-    
-
+    resolve(this.maxYAxisVal);
   })
 }
-  stateData(stateData: any) {
-    throw new Error('Method not implemented.');
-  }
+
 
 prepareDate(){
-
   this.currentDate = this.minDate;
   // console.log("check min date", this.minDate)
   this.prepareData()
       .then(() => {
-
-        console.log(1);
-
         this.createChart();
-      
-        
-    
       })
       .catch(error => console.log("error when inital draw map", error));
 }
@@ -198,7 +193,7 @@ prepareData(): Promise<any> {
               
 
     let y = d3.scaleLinear()
-              .domain([0,2000])
+              .domain([0,this.maxYAxisVal])
               .range([this.height, 0]);
     
 
