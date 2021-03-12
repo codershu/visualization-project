@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import * as d3 from "d3";
 import { groups } from 'd3';
+import value from '../../assets/data/state_name.json';
 import states from '../../assets/data/state_name.json';
 import { DailyData, StateData, BarChartSingleDayData } from '../shared/models';
 
@@ -26,11 +27,12 @@ export class BarChartComponent implements OnInit {
   marginTop: number = 20;
   marginRight: number = 160;
   marginBottom: number = 35;
-  marginLeft: number = 30;
+  marginLeft: number = 35;
   width: number = 1400 - this.marginLeft - this.marginRight;
   height: number = 400 - this.marginTop - this.marginBottom;
   xMax: number = 0;
   lowColor: string = '#f9f9f9';
+  
  
 
  
@@ -46,7 +48,7 @@ export class BarChartComponent implements OnInit {
   }
 
   loadAllData(){
-    console.log(3);
+    //console.log(3);
     Object.entries(this.myStates).forEach(([key, value]) => {
       // console.log("check", key, value)
       let fileName = key + '.json';
@@ -60,7 +62,7 @@ export class BarChartComponent implements OnInit {
     // Promise all Promises to move to the next step, ensure we have read all files
     Promise.all(this.loadAllFilePromises)
       .then(() => {
-        console.log("see what", this.allStatesData);
+        //console.log("see what", this.allStatesData);
         this.prepareDate();
         
       });
@@ -87,9 +89,10 @@ export class BarChartComponent implements OnInit {
             stateData.state = stateName;
             stateData.fullStateName = fullStateName;
             this.allStatesData.push(stateData);
-            //console.log("check json", stateData);
+            console.log("check json", this.allStatesData);
             
             resolve(stateData);
+        
           },
           error => {
             reject(error);
@@ -99,6 +102,18 @@ export class BarChartComponent implements OnInit {
     })
 }
 
+maxValue(death: number, hospitalized: number, positive: number): Promise<any>{
+  return new Promise((resolve, reject) => {
+    let maxValue = 0;
+    Object.entries(this.stateData).forEach
+
+    
+
+  })
+}
+  stateData(stateData: any) {
+    throw new Error('Method not implemented.');
+  }
 
 prepareDate(){
 
@@ -183,8 +198,8 @@ prepareData(): Promise<any> {
               
 
     let y = d3.scaleLinear()
-              .domain([0,500])
-              .range([this.height , 0]);
+              .domain([0,2000])
+              .range([this.height, 0]);
     
 
     this.svg.append('g')
