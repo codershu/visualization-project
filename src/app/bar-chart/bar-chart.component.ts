@@ -15,10 +15,9 @@ export class BarChartComponent implements OnInit {
 
   myStates: {} = states;
   loadAllFilePromises: Promise<any>[] = [];
-  // minVal: number = 0;
   maxYAxisVal: number = 0;
   allStatesData: StateData[] = [];
-  BarChartData: any = null;
+  barChartData: any = null;
   currentDate: string = "";
   minDate: string = "2021-02-01";
   maxDate: string = "2021-02-22";
@@ -27,7 +26,7 @@ export class BarChartComponent implements OnInit {
   marginTop: number = 20;
   marginRight: number = 160;
   marginBottom: number = 35;
-  marginLeft: number = 35;
+  marginLeft: number = 55;
   width: number = 1400 - this.marginLeft - this.marginRight;
   height: number = 400 - this.marginTop - this.marginBottom;
   xMax: number = 0;
@@ -116,6 +115,16 @@ getMaxYAxisValue(): Promise<any>{
   })
 }
 
+loadBarChartData(){
+  d3.json("assets/map/us-state.json")
+    .then(data => {
+      this.barChartData = data;
+      this.prepareDate();
+    })
+    .catch(error => 
+      console.log("error when load us.json", error)
+    );
+}
 
 prepareDate(){
   this.currentDate = this.minDate;
@@ -177,6 +186,12 @@ prepareData(): Promise<any> {
   drawBars(){
     let that = this;
 
+    // let stackedData = d3.stack()(["death", "hospitalized", "recovered"].map(function(totalNumber) {
+    //   return BarChartSingleDayData.map(function(d) {
+    //     return {x: d.state, y: +d[totalNumber]};
+    //   });
+    // }));
+
     // let subgroups = this.currentStateData.slice(1)
     // let groups = d3.map(this.currentStateData, function(d) {return (d.group)}).keys()
 
@@ -204,8 +219,12 @@ prepareData(): Promise<any> {
     //               .domain(subgroups)
     //               .range(['#e41a1c', '#377eb8', '#4daf4a'])
 
-    // let stackedData = d3.stack()
-    //                     .keys(subgroups)(data)
+    let groups = this.svg.selectAll('g.number')
+                    .data(this.currentStateData)
+                    .enter()
+                    .append('g')
+                    .attr('class', 'number')
+                                     
 
     // this.svg.append('g')
     //         .selectAll('g')
@@ -226,8 +245,14 @@ prepareData(): Promise<any> {
             .data(this.currentStateData)
             .enter()
             .append('rect')
+            // .attr('fill', function(d:any){
+            //   let data = that. currentStateData.find(x => x.fullStateName == d.fullStateName);
+            //   if(data){
+            //     let value = data.death + data.hospitalized + data.recovered;
+            //   }
+            // })
             .attr('x', (d: { state: string; }) => x(d.state))
-            .attr('y', (d: { death: d3.NumberValue; }) => y(d.death))
+            .attr('y', (d: { death: d3.NumberValue;}) => y(d.death))
             .attr('width', x.bandwidth())
             .attr('height', (d: { death: d3.NumberValue; }) => this.height - y(d.death))
             .attr('fill', '#d04a35');
@@ -235,28 +260,6 @@ prepareData(): Promise<any> {
             
   }
 
-
-
-    // this.svg.selectAll('.bar')
-    //         .data(this.currentStateData)
-    //         .enter()
-    //         .append('rect')
-    //         .attr('fill',function(d:any){
-    //           console.log('want to see', d)
-    //           let data = that.currentStateData.find(x => x.fullStateName == d.fullStateName);
-    //           if(data){
-    //             let value = data.death
-    //             return value;
-        
-            //   }
-            //   else 
-            //     return that.lowColor;
-            // })
-            // .attr("x", function(d:any) {return x(d.date);})
-            // .attr("y", function(d:any) {return y(d.death);})
-            // .attr("width", x.bandwidth())
-            // .attr("height", this.height )
-            // .attr("fill", "#d04a35");
   }
     
  
