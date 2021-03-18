@@ -150,12 +150,13 @@ prepareData(): Promise<any> {
       currentHospitalized = currentHospitalized == null ? 0 : currentHospitalized;
       let currentStateData = new BarChartSingleDayData();
       currentStateData.state = state.state;
-      currentStateData.death = currentDeath;
-      currentStateData.recovered = currentRecovered;
-      currentStateData.hospitalized = currentHospitalized;
+      currentStateData.death = +currentDeath;
+      currentStateData.recovered = +currentRecovered;
+      currentStateData.hospitalized = +currentHospitalized;
       currentStateData.fullStateName = state.fullStateName;
       this.currentStateData.push(currentStateData);
     })
+  
     //console.log(2, this.currentStateData);
     resolve(this.currentStateData);
   })
@@ -187,13 +188,20 @@ prepareData(): Promise<any> {
     let that = this;
 
     // let stackedData = d3.stack()(["death", "hospitalized", "recovered"].map(function(totalNumber) {
-    //   return BarChartSingleDayData.map(function(d) {
-    //     return {x: d.state, y: +d[totalNumber]};
-    //   });
+    //   // return that.currentStateData.map(function(d) {
+    //   //   return {x: d.state, y: +d[totalNumber]};
+    //   // });
     // }));
 
     // let subgroups = this.currentStateData.slice(1)
     // let groups = d3.map(this.currentStateData, function(d) {return (d.group)}).keys()
+
+    var stackGen = d3.stack()
+                    .keys(["death", "hospitalized", "recovered"])
+
+    // console.log("check ", this.currentStateData)
+
+    var stackedData = stackGen(this.currentStateData);
 
 
     let x = d3.scaleBand()
