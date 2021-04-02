@@ -1,0 +1,1956 @@
+[
+    {
+        "fullStateName" : "Alabama",
+        "shortStateName" : "AL",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 6373
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 5091
+        },{
+            "name" : "White",
+            "value" : 4829
+        },{
+            "name" : "Asian",
+            "value" : 3430
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 171
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 66
+        },{
+            "name" : "White",
+            "value" : 142
+        },{
+            "name" : "Asian",
+            "value" : 36
+        }]
+    },
+    {
+        "fullStateName" : "Alaska",
+        "shortStateName" : "AK",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 16384
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 11151
+        },{
+            "name" : "Black/African American",
+            "value" : 6193
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 6163
+        },{
+            "name" : "White",
+            "value" : 3844
+        },{
+            "name" : "Asian",
+            "value" : 5329
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 185
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 101
+        },{
+            "name" : "Black/African American",
+            "value" : 37
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 25
+        },{
+            "name" : "White",
+            "value" : 27
+        },{
+            "name" : "Asian",
+            "value" : 63
+        }]
+    },
+    {
+        "fullStateName" : "Arizona",
+        "shortStateName" : "AZ",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 14728
+        },{
+            "name" : "Black/African American",
+            "value" : 8675
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 11072
+        },{
+            "name" : "White",
+            "value" : 7997
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 4978
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 492
+        },{
+            "name" : "Black/African American",
+            "value" : 146
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 212
+        },{
+            "name" : "White",
+            "value" : 209
+        },{
+            "name" : "Asian/Pacific Indian",
+            "value" : 92
+        }]
+    },
+    {
+        "fullStateName" : "Arkansas",
+        "shortStateName" : "AR",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 38452
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 5236
+        },{
+            "name" : "Black/African American",
+            "value" : 11064
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 15318
+        },{
+            "name" : "White",
+            "value" : 9022
+        },{
+            "name" : "Asian",
+            "value" : 6402
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 641
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 88
+        },{
+            "name" : "Black/African American",
+            "value" : 171
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 83
+        },{
+            "name" : "White",
+            "value" : 181
+        },{
+            "name" : "Asian",
+            "value" : 79
+        }]
+    },
+    {
+        "fullStateName" : "California",
+        "shortStateName" : "CA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 10854
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 6408
+        },{
+            "name" : "Black/African American",
+            "value" : 5130
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 9846
+        },{
+            "name" : "White",
+            "value" : 3743
+        },{
+            "name" : "Asian",
+            "value" : 3325
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 229
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 131
+        },{
+            "name" : "Black/African American",
+            "value" : 151
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 159
+        },{
+            "name" : "White",
+            "value" : 114
+        },{
+            "name" : "Asian",
+            "value" : 109
+        }]
+    },
+    {
+        "fullStateName" : "Colorado",
+        "shortStateName" : "CO",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 16592
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 8314
+        },{
+            "name" : "Black/African American",
+            "value" : 5705
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 9868
+        },{
+            "name" : "White",
+            "value" : 4758
+        },{
+            "name" : "Asian",
+            "value" : 3668
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 118
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 122
+        },{
+            "name" : "Black/African American",
+            "value" : 86
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 100
+        },{
+            "name" : "White",
+            "value" : 101
+        },{
+            "name" : "Asian",
+            "value" : 66
+        }]
+    },
+    {
+        "fullStateName" : "Connecticut",
+        "shortStateName" : "CT",
+        "date" : "03/07/2021",
+        "infection" : [{
+            
+            "name" : "American Indian/Alaska Native",
+            "value" : 7023
+        },{
+            "name" : "Black/African American",
+            "value" : 5549
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 7231
+        },{
+            "name" : "White",
+            "value" : 3573
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 1878
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 54
+        },{
+            "name" : "Black/African American",
+            "value" : 256
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 136
+        },{
+            "name" : "White",
+            "value" : 226
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 52
+        }]
+    },
+    {
+        "fullStateName" : "Delaware",
+        "shortStateName" : "DE",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 9531
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 16446
+        },{
+            "name" : "White",
+            "value" : 7163
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 4980
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 159
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 91
+        },{
+            "name" : "White",
+            "value" : 174
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 30
+        }]
+    },
+    {
+        "fullStateName" : "District of Columbia",
+        "shortStateName" : "DC",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 21908
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 4113
+        },{
+            "name" : "Black/African American",
+            "value" : 6285
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 11097
+        },{
+            "name" : "White",
+            "value" : 3746
+        },{
+            "name" : "Asian",
+            "value" : 3313
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : -1
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : -1
+        },{
+            "name" : "Black/African American",
+            "value" : 241
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 156
+        },{
+            "name" : "White",
+            "value" : 37
+        },{
+            "name" : "Asian",
+            "value" : 51
+        }]
+    },
+    {
+        "fullStateName" : "Florida",
+        "shortStateName" : "FL",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 7424
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 11375
+        },{
+            "name" : "White",
+            "value" : 5895
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 150
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 137
+        },{
+            "name" : "White",
+            "value" : 154
+        }]
+    },
+    {
+        "fullStateName" : "Georgia",
+        "shortStateName" : "GA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 14446
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 2600
+        },{
+            "name" : "Black/African American",
+            "value" : 6660
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 8611
+        },{
+            "name" : "White",
+            "value" : 5819
+        },{
+            "name" : "Asian",
+            "value" : 4355
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 194
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 52
+        },{
+            "name" : "Black/African American",
+            "value" : 163
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 86
+        },{
+            "name" : "White",
+            "value" : 73
+        },{
+            "name" : "Asian",
+            "value" : 52
+        }]
+    },
+    {
+        "fullStateName" : "Hawaii",
+        "shortStateName" : "HI",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 5600
+        },{
+            "name" : "Black/African American",
+            "value" : 2229
+        },{
+            "name" : "White",
+            "value" : 1027
+        },{
+            "name" : "Asian",
+            "value" : 1129
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 96
+        },{
+            "name" : "Black/African American",
+            "value" : 15
+        },{
+            "name" : "White",
+            "value" : 11
+        },{
+            "name" : "Asian",
+            "value" : 45
+        }]
+    },
+    {
+        "fullStateName" : "Idaho",
+        "shortStateName" : "ID",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 14846
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 8878
+        },{
+            "name" : "Black/African American",
+            "value" : 8458
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 8049
+        },{
+            "name" : "White",
+            "value" : 6465
+        },{
+            "name" : "Asian",
+            "value" : 5019
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : -1
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 151
+        },{
+            "name" : "Black/African American",
+            "value" : 76
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 86
+        },{
+            "name" : "White",
+            "value" : 114
+        },{
+            "name" : "Asian",
+            "value" : 70
+        }]
+    },
+    {
+        "fullStateName" : "Illinois",
+        "shortStateName" : "IL",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 38686
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 9876
+        },{
+            "name" : "Black/African American",
+            "value" : 6206
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 10061
+        },{
+            "name" : "White",
+            "value" : 6007
+        },{
+            "name" : "Asian",
+            "value" : 3910
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 688
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 172
+        },{
+            "name" : "Black/African American",
+            "value" : 206
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 151
+        },{
+            "name" : "White",
+            "value" : 156
+        },{
+            "name" : "Asian",
+            "value" : 106
+        }]
+    },
+    {
+        "fullStateName" : "Indiana",
+        "shortStateName" : "IN",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 7097
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 8310
+        },{
+            "name" : "White",
+            "value" : 8144
+        },{
+            "name" : "Asian",
+            "value" : 5913
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 150
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 60
+        },{
+            "name" : "White",
+            "value" : 164
+        },{
+            "name" : "Asian",
+            "value" : 46
+        }]
+    },
+    {
+        "fullStateName" : "Iowa",
+        "shortStateName" : "IA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 22097
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 7415
+        },{
+            "name" : "Black/African American",
+            "value" : 8757
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 10823
+        },{
+            "name" : "White",
+            "value" : 7091
+        },{
+            "name" : "Asian",
+            "value" : 4485
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 429
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 159
+        },{
+            "name" : "Black/African American",
+            "value" : 115
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 73
+        },{
+            "name" : "White",
+            "value" : 182
+        },{
+            "name" : "Asian",
+            "value" : 81
+        }]
+    },
+    {
+        "fullStateName" : "Kansas",
+        "shortStateName" : "KS",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 8638
+        },{
+            "name" : "Black/African American",
+            "value" : 8415
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 11333
+        },{
+            "name" : "White",
+            "value" : 8541
+        },{
+            "name" : "Asian",
+            "value" : 6440
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 158
+        },{
+            "name" : "Black/African American",
+            "value" : 138
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 90
+        },{
+            "name" : "White",
+            "value" : 152
+        },{
+            "name" : "Asian",
+            "value" : 75
+        }]
+    },
+    {
+        "fullStateName" : "Kentucky",
+        "shortStateName" : "KY",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 11754
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 8875
+        },{
+            "name" : "Black/African American",
+            "value" : 7490
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 10707
+        },{
+            "name" : "White",
+            "value" : 7404
+        },{
+            "name" : "Asian",
+            "value" : 5645
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 63
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 43
+        },{
+            "name" : "Black/African American",
+            "value" : 103
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 45
+        },{
+            "name" : "White",
+            "value" : 103
+        },{
+            "name" : "Asian",
+            "value" : 35
+        }]
+    },
+    {
+        "fullStateName" : "Louisiana",
+        "shortStateName" : "LA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 34993
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 5793
+        },{
+            "name" : "Black/African American",
+            "value" : 9079
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : -1
+        },{
+            "name" : "White",
+            "value" : 7549
+        },{
+            "name" : "Asian",
+            "value" : 20647
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 925
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 57
+        },{
+            "name" : "Black/African American",
+            "value" : 248
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 100
+        },{
+            "name" : "White",
+            "value" : 200
+        },{
+            "name" : "Asian",
+            "value" : 93
+        }]
+    },
+    {
+        "fullStateName" : "Maine",
+        "shortStateName" : "ME",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 6566
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 1605
+        },{
+            "name" : "Black/African American",
+            "value" : 12194
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 3145
+        },{
+            "name" : "White",
+            "value" : 2880
+        },{
+            "name" : "Asian",
+            "value" : 3323
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 0
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 58
+        },{
+            "name" : "Black/African American",
+            "value" : 54
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 27
+        },{
+            "name" : "White",
+            "value" : 48
+        },{
+            "name" : "Asian",
+            "value" : 20
+        }]
+    },
+    {
+        "fullStateName" : "Maryland",
+        "shortStateName" : "MD",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 6335
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 10266
+        },{
+            "name" : "White",
+            "value" : 4398
+        },{
+            "name" : "Asian",
+            "value" : 2359
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 155
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 120
+        },{
+            "name" : "White",
+            "value" : 133
+        },{
+            "name" : "Asian",
+            "value" : 74
+        }]
+    },
+    {
+        "fullStateName" : "Massachusetts",
+        "shortStateName" : "MA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 7059
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 5214
+        },{
+            "name" : "Black/African American",
+            "value" : 7469
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 15556
+        },{
+            "name" : "White",
+            "value" : 4476
+        },{
+            "name" : "Asian",
+            "value" : 3566
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 226
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 114
+        },{
+            "name" : "Black/African American",
+            "value" : 226
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 159
+        },{
+            "name" : "White",
+            "value" : 245
+        },{
+            "name" : "Asian",
+            "value" : 92
+        }]
+    },
+    {
+        "fullStateName" : "Michigan",
+        "shortStateName" : "MI",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 6745
+        },{
+            "name" : "Black/African American",
+            "value" : 5408
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 6673
+        },{
+            "name" : "White",
+            "value" : 4839
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 3291
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 148
+        },{
+            "name" : "Black/African American",
+            "value" : 264
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 95
+        },{
+            "name" : "White",
+            "value" : 143
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 57
+        }]
+    },
+    {
+        "fullStateName" : "Minnesota",
+        "shortStateName" : "MN",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 25342
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 7988
+        },{
+            "name" : "Black/African American",
+            "value" : 10952
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 14619
+        },{
+            "name" : "White",
+            "value" : 7110
+        },{
+            "name" : "Asian",
+            "value" : 8006
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 273
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 155
+        },{
+            "name" : "Black/African American",
+            "value" : 89
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 68
+        },{
+            "name" : "White",
+            "value" : 118
+        },{
+            "name" : "Asian",
+            "value" : 97
+        }]
+    },
+    {
+        "fullStateName" : "Mississippi",
+        "shortStateName" : "MS",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 16603
+        },{
+            
+            "name" : "Black/African American",
+            "value" : 8725
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 7154
+        },{
+            "name" : "White",
+            "value" : 8337
+        },{
+            "name" : "Asian",
+            "value" : 4802
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 855
+        },{
+           
+            "name" : "Black/African American",
+            "value" : 238
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 66
+        },{
+            "name" : "White",
+            "value" : 217
+        },{
+            "name" : "Asian",
+            "value" : 61
+        }]
+    },
+    {
+        "fullStateName" : "Missouri",
+        "shortStateName" : "MO",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 267
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 3478
+        },{
+            "name" : "Black/African American",
+            "value" : 6028
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 6738
+        },{
+            "name" : "White",
+            "value" : 5029
+        },{
+            "name" : "Asian",
+            "value" : 3578
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 12
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 44
+        },{
+            "name" : "Black/African American",
+            "value" : 152
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 67
+        },{
+            "name" : "White",
+            "value" : 103
+        },{
+            "name" : "Asian",
+            "value" : 56
+        }]
+    },
+    {
+        "fullStateName" : "Montana",
+        "shortStateName" : "MT",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 14126
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 12057
+        },{
+            "name" : "Black/African American",
+            "value" : 8674
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 5762
+        },{
+            "name" : "White",
+            "value" : 6840
+        },{
+            "name" : "Asian",
+            "value" : 4141
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 124
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 303
+        },{
+            "name" : "Black/African American",
+            "value" : 19
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 62
+        },{
+            "name" : "White",
+            "value" : 92
+        },{
+            "name" : "Asian",
+            "value" : 12
+        }]
+    },
+    {
+        "fullStateName" : "Nebraska",
+        "shortStateName" : "NE",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 16880
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 7113
+        },{
+            "name" : "Black/African American",
+            "value" : 5538
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 11312
+        },{
+            "name" : "White",
+            "value" : 6270
+        },{
+            "name" : "Asian",
+            "value" : 6153
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 75
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 147
+        },{
+            "name" : "Black/African American",
+            "value" : 63
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 77
+        },{
+            "name" : "White",
+            "value" : 82
+        },{
+            "name" : "Asian",
+            "value" : 66
+        }]
+    },
+    {
+        "fullStateName" : "Nevada",
+        "shortStateName" : "NV",
+        "date" : "03/07/2021",
+        "infection" : [{
+            
+            "name" : "American Indian/Alaska Native",
+            "value" : 5467
+        },{
+            "name" : "Black/African American",
+            "value" : 8664
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 12500
+        },{
+            "name" : "White",
+            "value" : 7388
+        },{
+            "name" : "Asian",
+            "value" : 10222
+        }],
+        "mortality" : [{
+            
+            "name" : "American Indian/Alaska Native",
+            "value" : 166
+        },{
+            "name" : "Black/African American",
+            "value" : 180
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 141
+        },{
+            "name" : "White",
+            "value" : 186
+        },{
+            "name" : "Asian",
+            "value" : 250
+        }]
+    },
+    {
+        "fullStateName" : "New Hampshire",
+        "shortStateName" : "NH",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 0
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 4791
+        },{
+            "name" : "Black/African American",
+            "value" : 5590
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 8233
+        },{
+            "name" : "White",
+            "value" : 3248
+        },{
+            "name" : "Asian",
+            "value" : 2880
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 0
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 55
+        },{
+            "name" : "Black/African American",
+            "value" : 71
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 59
+        },{
+            "name" : "White",
+            "value" : 91
+        },{
+            "name" : "Asian",
+            "value" : 33
+        }]
+    },
+    {
+        "fullStateName" : "New Jersey",
+        "shortStateName" : "NJ",
+        "date" : "03/07/2021",
+        "infection" : [{
+            
+            "name" : "Black/African American",
+            "value" : 6207
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 8974
+        },{
+            "name" : "White",
+            "value" : 5462
+        },{
+            "name" : "Asian",
+            "value" : 3641
+        }],
+        "mortality" : [{
+           
+            "name" : "Black/African American",
+            "value" : 333
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 242
+        },{
+            "name" : "White",
+            "value" : 263
+        },{
+            "name" : "Asian",
+            "value" : 141
+        }]
+    },
+    {
+        "fullStateName" : "New Mexico",
+        "shortStateName" : "NM",
+        "date" : "03/07/2021",
+        "infection" : [{
+            
+            "name" : "American Indian/Alaska Native",
+            "value" : 16656
+        },{
+            "name" : "Black/African American",
+            "value" : 6225
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 8596
+        },{
+            "name" : "White",
+            "value" : 4132
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 5563
+        }],
+        "mortality" : [{
+            
+            "name" : "American Indian/Alaska Native",
+            "value" : 582
+        },{
+            "name" : "Black/African American",
+            "value" : 129
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 144
+        },{
+            "name" : "White",
+            "value" : 140
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 86
+        }]
+    },
+    {
+        "fullStateName" : "New York",
+        "shortStateName" : "NY",
+        "date" : "03/07/2021",
+        "infection" : [{
+           
+            "name" : "Black/African American",
+            "value" : -1
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : -1
+        },{
+            "name" : "White",
+            "value" : -1
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : -1
+        }],
+        "mortality" : [{
+            
+            "name" : "Black/African American",
+            "value" : 352
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 268
+        },{
+            "name" : "White",
+            "value" : 156
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 184
+        }]
+    },
+    {
+        "fullStateName" : "North Carolina",
+        "shortStateName" : "NC",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 9035
+        },{
+            "name" : "Black/African American",
+            "value" : 6679
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 12353
+        },{
+            "name" : "White",
+            "value" : 6274
+        },{
+            "name" : "Asian",
+            "value" : 4649
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 102
+        },{
+            "name" : "Black/African American",
+            "value" : 121
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 83
+        },{
+            "name" : "White",
+            "value" : 102
+        },{
+            "name" : "Asian",
+            "value" : 41
+        }]
+    },
+    {
+        "fullStateName" : "North Dakota",
+        "shortStateName" : "ND",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 10938
+        },{
+            "name" : "Black/African American",
+            "value" : 13104
+        },{
+            "name" : "White",
+            "value" : 8505
+        },{
+            "name" : "Asian",
+            "value" : 11966
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : -1
+        },{
+            "name" : "Black/African American",
+            "value" : -1
+        },{
+            "name" : "White",
+            "value" : -1
+        },{
+            "name" : "Asian",
+            "value" : -1
+        }]
+    },
+    {
+        "fullStateName" : "Ohio",
+        "shortStateName" : "OH",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 17861
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 4624
+        },{
+            "name" : "Black/African American",
+            "value" : 7038
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 6918
+        },{
+            "name" : "White",
+            "value" : 6116
+        },{
+            "name" : "Asian",
+            "value" : 5233
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 77
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 70
+        },{
+            "name" : "Black/African American",
+            "value" : 149
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 68
+        },{
+            "name" : "White",
+            "value" : 159
+        },{
+            "name" : "Asian",
+            "value" : 54
+        }]
+    },
+    {
+        "fullStateName" : "Oklahoma",
+        "shortStateName" : "OK",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 13964
+        },{
+            "name" : "Black/African American",
+            "value" : 8074
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 10279
+        },{
+            "name" : "White",
+            "value" : 8586
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 8582
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 133
+        },{
+            "name" : "Black/African American",
+            "value" : 95
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 56
+        },{
+            "name" : "White",
+            "value" : 114
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 62
+        }]
+    },
+    {
+        "fullStateName" : "Oregon",
+        "shortStateName" : "OR",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 8445
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 5762
+        },{
+            "name" : "Black/African American",
+            "value" : 4818
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 7625
+        },{
+            "name" : "White",
+            "value" : 2196
+        },{
+            "name" : "Asian",
+            "value" : 2686
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 120
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 85
+        },{
+            "name" : "Black/African American",
+            "value" : 58
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 39
+        },{
+            "name" : "White",
+            "value" : 44
+        },{
+            "name" : "Asian",
+            "value" : 32
+        }]
+    },
+    {
+        "fullStateName" : "Pennsyvania",
+        "shortStateName" : "PA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 5674
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 6354
+        },{
+            "name" : "White",
+            "value" : 4729
+        },{
+            "name" : "Asian",
+            "value" : 3707
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 198
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 105
+        },{
+            "name" : "White",
+            "value" : 189
+        },{
+            "name" : "Asian",
+            "value" : 87
+        }]
+    },
+    {
+        "fullStateName" : "Rhode Island",
+        "shortStateName" : "RI",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 0
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 9083
+        },{
+            "name" : "Black/African American",
+            "value" : 12878
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 19006
+        },{
+            "name" : "White",
+            "value" : 7800
+        },{
+            "name" : "Asian",
+            "value" : 6616
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 0
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 29
+        },{
+            "name" : "Black/African American",
+            "value" : 172
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 127
+        },{
+            "name" : "White",
+            "value" : 238
+        },{
+            "name" : "Asian",
+            "value" : 105
+        }]
+    },
+    {
+        "fullStateName" : "South Carolina",
+        "shortStateName" : "SC",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 7983
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 10241
+        },{
+            "name" : "White",
+            "value" : 7078
+        },{
+            "name" : "Asian",
+            "value" : 6571
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 179
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 74
+        },{
+            "name" : "White",
+            "value" : 140
+        },{
+            "name" : "Asian",
+            "value" : 69
+        }]
+    },
+    {
+        "fullStateName" : "South Dakota",
+        "shortStateName" : "SD",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 18418
+        },{
+            "name" : "Black/African American",
+            "value" : 14653
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 12551
+        },{
+            "name" : "White",
+            "value" : 11881
+        },{
+            "name" : "Asian",
+            "value" : 11734
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 361
+        },{
+            "name" : "Black/African American",
+            "value" : 41
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 70
+        },{
+            "name" : "White",
+            "value" : 210
+        },{
+            "name" : "Asian",
+            "value" : 128
+        }]
+    },
+    {
+        "fullStateName" : "Tennessee",
+        "shortStateName" : "TN",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 14956
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 5674
+        },{
+            "name" : "Black/African American",
+            "value" : 9090
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 13409
+        },{
+            "name" : "White",
+            "value" : 9410
+        },{
+            "name" : "Asian",
+            "value" : 5899
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 159
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 49
+        },{
+            "name" : "Black/African American",
+            "value" : 177
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 83
+        },{
+            "name" : "White",
+            "value" : 158
+        },{
+            "name" : "Asian",
+            "value" : 57
+        }]
+    },
+    {
+        "fullStateName" : "Texas",
+        "shortStateName" : "TX",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 381
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 249
+        },{
+            "name" : "White",
+            "value" : 216
+        },{
+            "name" : "Asian",
+            "value" : 70
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 128
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 184
+        },{
+            "name" : "White",
+            "value" : 154
+        },{
+            "name" : "Asian",
+            "value" : 67
+        }]
+    },
+    {
+        "fullStateName" : "Utah",
+        "shortStateName" : "UT",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 33126
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 17591
+        },{
+            "name" : "Black/African American",
+            "value" : 14466
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 17757
+        },{
+            "name" : "White",
+            "value" : 9819
+        },{
+            "name" : "Asian",
+            "value" : 10010
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 211
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 252
+        },{
+            "name" : "Black/African American",
+            "value" : 52
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 65
+        },{
+            "name" : "White",
+            "value" : 55
+        },{
+            "name" : "Asian",
+            "value" : 83
+        }]
+    },
+    {
+        "fullStateName" : "Vermont",
+        "shortStateName" : "VT",
+        "date" : "03/07/2021",
+        "infection" : [{
+         
+            "name" : "American Indian/Alaska Native",
+            "value" : 938
+        },{
+            "name" : "Black/African American",
+            "value" : 7210
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 3057
+        },{
+            "name" : "White",
+            "value" : 2166
+        },{
+            "name" : "Asian",
+            "value" : 7131
+        }],
+        "mortality" : [{
+           
+            "name" : "American Indian/Alaska Native",
+            "value" : 47
+        },{
+            "name" : "Black/African American",
+            "value" : 24
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 0
+        },{
+            "name" : "White",
+            "value" : 31
+        },{
+            "name" : "Asian",
+            "value" : 48
+        }]
+    },
+    {
+        "fullStateName" : "Virginia",
+        "shortStateName" : "VA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 4179
+        },{
+            "name" : "Black/African American",
+            "value" : 6242
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 9706
+        },{
+            "name" : "White",
+            "value" : 4501
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 3692
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 133
+        },{
+            "name" : "Black/African American",
+            "value" : 142
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 81
+        },{
+            "name" : "White",
+            "value" : 115
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 62
+        }]
+    },
+    {
+        "fullStateName" : "washington",
+        "shortStateName" : "WA",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 7765
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 4054
+        },{
+            "name" : "Black/African American",
+            "value" : 4038
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 6670
+        },{
+            "name" : "White",
+            "value" : 1903
+        },{
+            "name" : "Asian",
+            "value" : 2002
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 170
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 134
+        },{
+            "name" : "Black/African American",
+            "value" : 59
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 64
+        },{
+            "name" : "White",
+            "value" : 70
+        },{
+            "name" : "Asian",
+            "value" : 61
+        }]
+    },
+    {
+        "fullStateName" : "West Virginia",
+        "shortStateName" : "WV",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Black/African American",
+            "value" : 6901
+        },{
+            "name" : "White",
+            "value" : 6574
+        }],
+        "mortality" : [{
+            "name" : "Black/African American",
+            "value" : 85
+        },{
+            "name" : "White",
+            "value" : 121
+        }]
+    },
+    {
+        "fullStateName" : "Wisconsin",
+        "shortStateName" : "WI",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 14749
+        },{
+            "name" : "Black/African American",
+            "value" : 10924
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 16139
+        },{
+            "name" : "White",
+            "value" : 9724
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 9470
+        }],
+        "mortality" : [{
+            "name" : "American Indian/Alaska Native",
+            "value" : 189
+        },{
+            "name" : "Black/African American",
+            "value" : 129
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 99
+        },{
+            "name" : "White",
+            "value" : 124
+        },{
+            "name" : "Asian/Pacific Islander",
+            "value" : 77
+        }]
+    },
+    {
+        "fullStateName" : "Wyoming",
+        "shortStateName" : "WY",
+        "date" : "03/07/2021",
+        "infection" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 29130
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 17933
+        },{
+            "name" : "Black/African American",
+            "value" : 8184
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 7210
+        },{
+            "name" : "White",
+            "value" : 5757
+        },{
+            "name" : "Asian",
+            "value" : 5727
+        }],
+        "mortality" : [{
+            "name" : "Native Hawaiian/Pacific Islander",
+            "value" : 217
+        },{
+            "name" : "American Indian/Alaska Native",
+            "value" : 406
+        },{
+            "name" : "Black/African American",
+            "value" : 39
+        },{
+            "name" : "Hispanic/Latino",
+            "value" : 101
+        },{
+            "name" : "White",
+            "value" : 124
+        },{
+            "name" : "Asian",
+            "value" : 122
+        }]
+    }
+]

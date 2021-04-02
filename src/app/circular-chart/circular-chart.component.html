@@ -1,1 +1,34 @@
-<p>circular-chart works!</p>
+<div class="main-container">
+    <div>
+        <div class="sub-page-title">Infection and Mortality by Race and Ethnicity</div>
+        <div style="text-align: center;">
+            <clr-combobox-container>
+                <label>Current State</label>
+                <clr-combobox [(ngModel)]="currentState" name="myState" (ngModelChange)="onSelectState()" required>
+                  <clr-options>
+                    <clr-option *clrOptionItems="let state of stateList; field:'fullName'" [clrValue]="state">
+                      {{state.fullName}}
+                    </clr-option>
+                  </clr-options>
+                </clr-combobox>
+                <!-- <clr-control-helper>Helper text</clr-control-helper> -->
+                <!-- <clr-control-error>There was an error</clr-control-error> -->
+              </clr-combobox-container>
+        </div>
+    </div>
+    <div style="height: 450px; width: 1000px; display: inline-block; margin-top: 20px;">
+        <div class="circular">
+            <div class="circular-title">Infection</div>
+            <div style="text-align: center;">( per 100,000 people )</div>
+            <div [hidden]="isDataFound">No data was found</div>
+            <div id="infection"></div>
+        </div>
+        <div class="circular">
+            <div class="circular-title">Mortality</div>
+            <div style="text-align: center;">( per 100,000 people )</div>
+            <div [hidden]="isDataFound">No data was found</div>
+            <div id="mortality">
+            </div>
+        </div>
+    </div>
+</div>

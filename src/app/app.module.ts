@@ -8,6 +8,7 @@ import { MapChartComponent } from './map-chart/map-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { DescriptionComponent } from './description/description.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ClarityModule
+    ClarityModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

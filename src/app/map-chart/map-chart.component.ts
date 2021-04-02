@@ -14,7 +14,7 @@ export class MapChartComponent implements OnInit {
 
   myStates: {} = states;
   loadAllFilePromises: Promise<any>[] = [];
-  currentDate: string = "";
+  currentDate: string = "2020-03-01";
   mapData: any = null;
   width: number = 860;
   height: number = 500;
@@ -27,7 +27,7 @@ export class MapChartComponent implements OnInit {
   lowColor: string = "#f9f9f9";
   highColor: string = "#B22222";
   dynamicalInterval: any;
-  mouseoverState: string = "";
+  mouseoverState: string = "None";
   mouseoverNumber: number = 0;
 
   projection = d3.geoAlbersUsa()
@@ -185,15 +185,15 @@ export class MapChartComponent implements OnInit {
             .attr("stroke-width", 0.5)
             .attr("d", that.path);
     
-    this.tooltip = d3.select("#graph")
-            .append("div")
-            .style("opacity", 0)
-            .attr("class", "tooltip")
-            .style("background-color", "white")
-            .style("border", "solid")
-            .style("border-width", "2px")
-            .style("border-radius", "5px")
-            .style("padding", "5px");
+    // this.tooltip = d3.select("#graph")
+    //         .append("div")
+    //         .style("opacity", 0)
+    //         .attr("class", "tooltip")
+    //         .style("background-color", "white")
+    //         .style("border", "solid")
+    //         .style("border-width", "2px")
+    //         .style("border-radius", "5px")
+    //         .style("padding", "5px");
 
     this.addTag();
 
@@ -227,21 +227,15 @@ export class MapChartComponent implements OnInit {
             .attr('font-size','6pt')
             .on("mouseover", function(d: any, i: any){
               clearInterval(that.dynamicalInterval);
-              that.tooltip.style("opacity", 1);
-              d3.select(null)
-                .style("stroke", "none")
-                .style("opacity", 0.8);
+              // that.tooltip.style("opacity", 1);
+              // d3.select(null)
+              //   .style("stroke", "none")
+              //   .style("opacity", 0.8);
               let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
               let number = 0;
               if(data) number = data.positive;
               that.mouseoverState = i.properties.name;
               that.mouseoverNumber = number;
-              // that.tooltip
-              //   .html(function(){
-              //     // console.log("check d 2", d)
-              //     return "State: " + i.properties.name + ", Number: " + number;
-              //   }
-              // )  
             })
             .on("mousemove", function(d: any, i: any){
               clearInterval(that.dynamicalInterval);
@@ -250,22 +244,16 @@ export class MapChartComponent implements OnInit {
               if(data) number = data.positive;
               that.mouseoverState = i.properties.name;
               that.mouseoverNumber = number;
-              // that.tooltip
-              //   .html(function(){
-              //     // console.log("check d 2", d)
-              //     return "State: " + i.properties.name + ", Number: " + number;
-              //   }
-              // )  
             })
             .on("mouseleave", function(){
               that.mouseoverState = "None";
               that.mouseoverNumber = 0;
               that.dynamicalChange();
-              that.tooltip
-                  .style("opacity", 0)
-              d3.select(null)
-                .style("stroke", "none")
-                .style("opacity", 0.8)
+              // that.tooltip
+              //     .style("opacity", 0)
+              // d3.select(null)
+              //   .style("stroke", "none")
+              //   .style("opacity", 0.8)
             })
   }
 
@@ -273,8 +261,12 @@ export class MapChartComponent implements OnInit {
   dynamicalChange(){
     this.dynamicalInterval = setInterval(() => {
       let current = new Date(this.currentDate);
+      // console.log("get new date", this.currentDate)
       if(current < new Date(this.maxDate)){
+        // weird, need to add the next line of code to ensure that this.currentDate can get the right value
+        let nextDate = new Date(current.setDate(current.getDate() + 1)).toLocaleString('en-CA').slice(0, 10)
         this.currentDate = new Date(current.setDate(current.getDate() + 1)).toLocaleString('en-CA').slice(0, 10);
+        // console.log("check", new Date(current.setDate(current.getDate() + 1)).toLocaleString('en-CA').slice(0, 10), this.currentDate);
         this.prepareData()
           .then(() => {
             this.updateMap();
@@ -286,7 +278,6 @@ export class MapChartComponent implements OnInit {
           this.currentDate = this.minDate;
           this.dynamicalChange();
         }, 3000);
-
       }
     }, 50);
   }
@@ -311,21 +302,15 @@ export class MapChartComponent implements OnInit {
             })
             .on("mouseover", function(d: any, i: any){
               clearInterval(that.dynamicalInterval);
-              that.tooltip.style("opacity", 1);
-              d3.select(null)
-                .style("stroke", "none")
-                .style("opacity", 0.8);
+              // that.tooltip.style("opacity", 1);
+              // d3.select(null)
+              //   .style("stroke", "none")
+              //   .style("opacity", 0.8);
               let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
               let number = 0;
               if(data) number = data.positive;
               that.mouseoverState = i.properties.name;
               that.mouseoverNumber = number;
-              // that.tooltip
-              //   .html(function(){
-              //     // console.log("check d 2", d)
-              //     return "State: " + i.properties.name + ", Number: " + number;
-              //   }
-              // )  
             })
             .on("mousemove", function(d: any, i: any){
               clearInterval(that.dynamicalInterval);
@@ -333,27 +318,21 @@ export class MapChartComponent implements OnInit {
               let number = 0;
               if(data) number = data.positive;
               that.mouseoverState = i.properties.name;
-              that.mouseoverNumber = number;
-              // that.tooltip
-              //   .html(function(){
-              //     // console.log("check d 2", d)
-              //     return "State: " + i.properties.name + ", Number: " + number;
-              //   }
-              // )  
+              that.mouseoverNumber = number; 
             })
             .on("mouseleave", function(){
               that.dynamicalChange();
-              that.tooltip
-                  .style("opacity", 0)
-              d3.select(null)
-                .style("stroke", "none")
-                .style("opacity", 0.8);
+              // that.tooltip
+              //     .style("opacity", 0)
+              // d3.select(null)
+              //   .style("stroke", "none")
+              //   .style("opacity", 0.8);
               that.mouseoverState = "None";
               that.mouseoverNumber = 0;
             })
             .attr("d", that.path);
 
-    this.addTag();
+    // this.addTag();
   }
 
   drawLengend(){

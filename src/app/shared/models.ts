@@ -62,3 +62,29 @@ export class BarChartSingleDayData{
     public recovered: number = 0;
     public hospitalized: number = 0;
 }
+
+export class BarChartStackData{
+    public death: number = 0;
+    public recovered: number = 0;
+    public hospitalized: number = 0;
+}
+
+export class RaceData{
+    public fullStateName: string = "";
+    public shortStateName: string = "";
+    public date: string = "";
+    public infection: RaceDataNode[] = [];
+    public mortality: RaceDataNode[] = [];
+}
+
+export class RaceDataNode{
+    public name: string = "";
+    public value: number = 0;
+}
+
+export class StateCheckboxItem{
+    public name: string = "";
+    public fullName: string = "";
+    public checked: boolean = false;
+    public disable: boolean = false;
+}

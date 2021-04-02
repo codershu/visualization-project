@@ -1,8 +1,24 @@
 
 <div class="main-container">
     <div class="sub-page-title">
-        <h4>US Covid-19 BarChart</h4>
-        <p>Current Date: {{currentDate}}</p>
+        <div class="sub-page-title">US Covid-19 Recover Progress</div>
+        <p>Current Date: <span style="color:darkslategray;font-weight: bold;">{{currentDate}}</span></p>
     </div>
-    <div id="graph"></div>
+    <div style="height: 450px; width: 1000px; display: inline-block; margin-top: 10px;">
+        <div class="checkbox">
+            <div style="margin-left: 30px;">You can select up to <span style="font-weight: bold;">10</span> states at a time</div>
+            <div style="margin-left: 30px;">You have selected <span style="font-weight: bold;">{{selectedStates.length}}</span> states</div>
+            <div *ngFor="let state of checkboxList; let i = index;" style="width: 25px; float: left; margin-left: 30px;">
+                <clr-checkbox-wrapper>
+                    <input type="checkbox" clrCheckbox name="{{state.fullName}}" required value="{{state.name}}" [(ngModel)]="state.checked" (change)="onStatesCheckboxChange($event)" [disabled]="state.disable"/>
+                    <label>{{checkboxList[i].name}}</label>
+                </clr-checkbox-wrapper>
+            </div>
+            
+            <button class="btn btn-danger btn-sm btn-position" (click)="onPauseClick()" [disabled]="btnDisabled">Pause</button>
+            <button class="btn btn-sm btn-primary btn-position" (click)="onContinueClick()" [disabled]="!btnDisabled">Continue</button>
+            <!-- <button class="btn btn-primary btn-sm btn-position" (click)="onStartClick()">Start</button> -->
+        </div>
+        <div id="barChartGraph" class="barChart"></div>
+    </div>
 </div>
