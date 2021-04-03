@@ -29,6 +29,7 @@ export class MapChartComponent implements OnInit {
   dynamicalInterval: any;
   mouseoverState: string = "None";
   mouseoverNumber: number = 0;
+  speed: number = -50;
 
   projection = d3.geoAlbersUsa()
                   .scale(900)
@@ -49,6 +50,11 @@ export class MapChartComponent implements OnInit {
   ngOnInit(): void {
     // start point for everything
     this.loadAllData();
+  }
+
+  onSpeedChange(){
+    clearInterval(this.dynamicalInterval);
+    this.dynamicalChange();
   }
 
   loadAllData(){
@@ -116,6 +122,7 @@ export class MapChartComponent implements OnInit {
 
    // find the minimum date as the start date
    prepareDate(){
+    // comment out this piece of code due to the min date found was too early, lots of states don't have data around the earliest date
     // this.allStatesData.forEach(state => {
     //   let tempDate = new Date(state.daily[state.daily.length - 1].date);
     //   let current = new Date(this.minDate);
@@ -184,16 +191,6 @@ export class MapChartComponent implements OnInit {
             .attr("stroke", "#333")
             .attr("stroke-width", 0.5)
             .attr("d", that.path);
-    
-    // this.tooltip = d3.select("#graph")
-    //         .append("div")
-    //         .style("opacity", 0)
-    //         .attr("class", "tooltip")
-    //         .style("background-color", "white")
-    //         .style("border", "solid")
-    //         .style("border-width", "2px")
-    //         .style("border-radius", "5px")
-    //         .style("padding", "5px");
 
     this.addTag();
 
@@ -218,19 +215,17 @@ export class MapChartComponent implements OnInit {
               return shortName;
             })
             .attr("x", function(d: any){
-                return that.path.centroid(d)[0];
+              if(Number.isNaN(that.path.centroid(d)[0])) return 0;
+              return that.path.centroid(d)[0];
             })
             .attr("y", function(d: any){
-                return that.path.centroid(d)[1];
+              if(Number.isNaN(that.path.centroid(d)[1])) return 0;
+              return that.path.centroid(d)[1];
             })
             .attr("text-anchor","middle")
             .attr('font-size','6pt')
             .on("mouseover", function(d: any, i: any){
               clearInterval(that.dynamicalInterval);
-              // that.tooltip.style("opacity", 1);
-              // d3.select(null)
-              //   .style("stroke", "none")
-              //   .style("opacity", 0.8);
               let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
               let number = 0;
               if(data) number = data.positive;
@@ -249,11 +244,6 @@ export class MapChartComponent implements OnInit {
               that.mouseoverState = "None";
               that.mouseoverNumber = 0;
               that.dynamicalChange();
-              // that.tooltip
-              //     .style("opacity", 0)
-              // d3.select(null)
-              //   .style("stroke", "none")
-              //   .style("opacity", 0.8)
             })
   }
 
@@ -279,7 +269,7 @@ export class MapChartComponent implements OnInit {
           this.dynamicalChange();
         }, 3000);
       }
-    }, 50);
+    }, -this.speed);
   }
 
   // update existing map with new data
@@ -302,10 +292,6 @@ export class MapChartComponent implements OnInit {
             })
             .on("mouseover", function(d: any, i: any){
               clearInterval(that.dynamicalInterval);
-              // that.tooltip.style("opacity", 1);
-              // d3.select(null)
-              //   .style("stroke", "none")
-              //   .style("opacity", 0.8);
               let data = that.currentStateData.find(x => x.fullStateName == i.properties.name);
               let number = 0;
               if(data) number = data.positive;
@@ -321,14 +307,9 @@ export class MapChartComponent implements OnInit {
               that.mouseoverNumber = number; 
             })
             .on("mouseleave", function(){
-              that.dynamicalChange();
-              // that.tooltip
-              //     .style("opacity", 0)
-              // d3.select(null)
-              //   .style("stroke", "none")
-              //   .style("opacity", 0.8);
               that.mouseoverState = "None";
               that.mouseoverNumber = 0;
+              that.dynamicalChange();
             })
             .attr("d", that.path);
 

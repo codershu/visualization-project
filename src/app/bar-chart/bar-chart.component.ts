@@ -93,6 +93,7 @@ export class BarChartComponent implements OnInit {
   subgroups = ["death", "hospitalized", "recovered"];
   dynamicalInterval: any;
   btnDisabled: boolean = false;
+  speed: number = -50;
   
  
   constructor(private http: HttpClient) { }
@@ -147,6 +148,11 @@ export class BarChartComponent implements OnInit {
   onPauseClick(){
     clearInterval(this.dynamicalInterval);
     this.btnDisabled = true;
+  }
+
+  onSpeedChange(){
+    clearInterval(this.dynamicalInterval);
+    this.dynamicalChange();
   }
 
   loadAllData(){
@@ -266,7 +272,7 @@ prepareData(): Promise<any> {
     
     let x = d3.scaleBand()
               .domain(this.currentStateData.map(d => d.state))
-              .range([0, this.width/2.2])
+              .range([0, this.width/2])
               .padding(0.5);
     
     this.svg.append('g')
@@ -356,7 +362,7 @@ prepareData(): Promise<any> {
           this.dynamicalChange();
         }, 3000);
       }
-    }, 100);
+    }, -this.speed);
   }
 
   updateBars(){
@@ -395,6 +401,16 @@ prepareData(): Promise<any> {
     
     var stackedData = d3.stack()
                   .keys(this.subgroups)(this.currentStackData);
+        
+    var Tooltip = d3.select("#barChartGraph")
+                  .append("div")
+                  .style("opacity", 0)
+                  .attr("class", "tooltip")
+                  .style("background-color", "white")
+                  .style("border", "solid")
+                  .style("border-width", "1px")
+                  .style("border-radius", "5px")
+                  .style("padding", "5px");
 
     this.svg.append('g')
             .selectAll('g')
@@ -415,7 +431,22 @@ prepareData(): Promise<any> {
             })
             .attr('y', function(d: any) {return y(d[1]);})
             .attr('height', function(d: any) {return y(d[0]) - y(d[1]);})
-            .attr('width', x.bandwidth());
+            .attr('width', x.bandwidth())
+            .on("mouseover", function(d: any, i: any){
+              clearInterval(that.dynamicalInterval);
+              // console.log("mouse over", d, i.data)
+            })
+            .on("mousemove", function(d: any, i: any){
+              clearInterval(that.dynamicalInterval);
+              Tooltip
+                .html('<div style="font-size: 11px;">Recovered: ' + i.data.recovered + '</div>' + '<div style="font-size: 11px;">Hospitalized: ' + i.data.hospitalized + '</div>' + '<div style="font-size: 11px;">Death: ' + i.data.death + '</div>')
+                .style("left", d.x + 30 + "px")
+                .style("top", d.y + "px")
+                .style("opacity", 1);
+            })
+            .on("mouseleave", function(){
+              that.dynamicalChange();
+            })
     
     var legend = this.svg.append("g")
             .attr("font-family", "sans-serif")

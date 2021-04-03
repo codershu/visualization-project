@@ -117,7 +117,7 @@ export class CircularChartComponent implements OnInit {
       let endingWord = svgId == "#infection" ? " infected" : " death";
 
       Tooltip
-        .html('<u>' + d.name + '</u>' + "<br>" + d.value + endingWord)
+        .html('<div style="font-size: 11px;">' + d.name + '</div>' + '<div style="font-size: 11px;">' + d.value + endingWord + '</div>') 
         .style("left", i.x + 30 + "px")
         .style("top", i.y + "px")
     }
