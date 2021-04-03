@@ -73,12 +73,14 @@ export class CircularChartComponent implements OnInit {
                           .attr("height", this.height);
 
     let domain: string[] = [];
+    let total = 0;
     if(data){
       this.isDataFound = true;
       data.forEach(race => {
+        // console.log("check data", race)
         domain.push(race.name)
+        total += race.value;
       })
-      // console.log("check data", infection)
       // console.log("check domain", domain)
     }else{
       this.isDataFound = false;
@@ -113,11 +115,11 @@ export class CircularChartComponent implements OnInit {
         .style("opacity", 1)
     }
     var mousemove = function(i: any, d: any) {
-      // console.log("check pointer", d3.pointer, i)
+      // console.log("check pointer", d3.pointer, i, d)
       let endingWord = svgId == "#infection" ? " infected" : " death";
-
+      let rate = (d.value * 100 / total).toFixed(2);
       Tooltip
-        .html('<div style="font-size: 11px;">' + d.name + '</div>' + '<div style="font-size: 11px;">' + d.value + endingWord + '</div>') 
+        .html('<div style="font-size: 11px;">' + d.name + '</div>' + '<div style="font-size: 11px;">' + d.value + ' (' + rate + '%)' + '</div>') 
         .style("left", i.x + 30 + "px")
         .style("top", i.y + "px")
     }

@@ -438,8 +438,12 @@ prepareData(): Promise<any> {
             })
             .on("mousemove", function(d: any, i: any){
               clearInterval(that.dynamicalInterval);
+              let total = i.data.recovered + i.data.death + i.data.hospitalized;
+              let deathRate = (i.data.death * 100 / total).toFixed(2);
+              let hospitalizedRate = (i.data.hospitalized * 100 / total).toFixed(2);
+              let recoveredRate = (i.data.recovered * 100 / total).toFixed(2);
               Tooltip
-                .html('<div style="font-size: 11px;">Recovered: ' + i.data.recovered + '</div>' + '<div style="font-size: 11px;">Hospitalized: ' + i.data.hospitalized + '</div>' + '<div style="font-size: 11px;">Death: ' + i.data.death + '</div>')
+                .html('<div style="font-size: 11px;">Recovered: ' + i.data.recovered + ' (' + recoveredRate + '%) </div>' + '<div style="font-size: 11px;">Hospitalized: ' + i.data.hospitalized + ' (' + hospitalizedRate + '%) </div>' + '<div style="font-size: 11px;">Death: ' + i.data.death + ' (' + deathRate + '%) </div>')
                 .style("left", d.x + 30 + "px")
                 .style("top", d.y + "px")
                 .style("opacity", 1);
